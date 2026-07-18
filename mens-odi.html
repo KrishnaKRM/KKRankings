@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK's One-day Team Rankings</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="team-theme.css">
+</head>
+<body class="team-page-body">
+<div style="width:100%;max-width:1240px;">
+  <div class="team-standalone-note">Standalone preview — edit the data below in this file. <a href="index.html">← Back to full site</a></div>
+  <div id="teamboard"></div>
+</div>
+
+<script type="application/json" id="rankingsData" data-prefix="mens-odi">
+{
+  "title": "KK's One-day <em>Rankings</em>",
+  "subtitle": "Updated as on 20 June 2026",
+  "footerNote": "Updated after Pakistan v Australia, West Indies v Sri Lanka, Canada-Netherlands-USA Tri-Series, Bangladesh v Australia & India v Afghanistan Series",
+  "cols": 3,
+  "rows": [
+    { "rank":1,  "code":"in",     "team":"India",                    "rankChg":0,  "rating":193, "change":"+2", "highlight":"up" },
+    { "rank":2,  "code":"nz",     "team":"New Zealand",              "rankChg":0,  "rating":178, "change":"-"  },
+    { "rank":3,  "code":"au",     "team":"Australia",                "rankChg":0,  "rating":167, "change":"-6", "highlight":"down" },
+    { "rank":4,  "code":"pk",     "team":"Pakistan",                 "rankChg":0,  "rating":166, "change":"+1" },
+    { "rank":5,  "code":"af",     "team":"Afghanistan",              "rankChg":0,  "rating":160, "change":"-2", "highlight":"down" },
+    { "rank":6,  "code":"lk",     "team":"Sri Lanka",                "rankChg":0,  "rating":159, "change":"-"  },
+    { "rank":7,  "code":"za",     "team":"South Africa",             "rankChg":0,  "rating":158, "change":"-"  },
+    { "rank":8,  "code":"gb-eng", "team":"England",                  "rankChg":0,  "rating":152, "change":"-1" },
+    { "rank":9,  "code":"bd",     "team":"Bangladesh",                "rankChg":0,  "rating":151, "change":"+4", "highlight":"up" },
+    { "rank":10, "svg":"https://upload.wikimedia.org/wikipedia/commons/1/10/Cricket_West_Indies_flag_2017.svg", "team":"West Indies", "rankChg":0, "rating":139, "change":"-2", "highlight":"down" },
+    { "rank":11, "code":"zw",     "team":"Zimbabwe",                 "rankChg":0,  "rating":129, "change":"+1" },
+    { "rank":12, "svg":"https://upload.wikimedia.org/wikipedia/commons/8/85/Flag_of_Cricket_Ireland.svg", "team":"Ireland", "rankChg":0, "rating":120, "change":"+1" },
+    { "rank":13, "code":"gb-sct", "team":"Scotland",                 "rankChg":0,  "rating":117, "change":"-"  },
+    { "rank":14, "code":"nl",     "team":"Netherlands",              "rankChg":0,  "rating":111, "change":"-2" },
+    { "rank":15, "code":"us",     "team":"United States of America", "rankChg":0,  "rating":109, "change":"-"  },
+    { "rank":16, "code":"om",     "team":"Oman",                     "rankChg":0,  "rating":100, "change":"-1" },
+    { "rank":17, "code":"je",     "team":"Jersey",                   "rankChg":0,  "rating":99,  "change":"-1" },
+    { "rank":18, "code":"np",     "team":"Nepal",                    "rankChg":0,  "rating":98,  "change":"+1" },
+    { "rank":19, "code":"na",     "team":"Namibia",                  "rankChg":0,  "rating":93,  "change":"-1" },
+    { "rank":20, "code":"ca",     "team":"Canada",                   "rankChg":2,  "rating":87,  "change":"+3" },
+    { "rank":21, "code":"ug",     "team":"Uganda",                   "rankChg":0,  "rating":86,  "change":"+1" },
+    { "rank":22, "code":"ae",     "team":"United Arab Emirates",     "rankChg":-2, "rating":85,  "change":"-1" },
+    { "rank":23, "code":"kw",     "team":"Kuwait",                   "rankChg":0,  "rating":80,  "change":"-"  },
+    { "rank":24, "code":"hk",     "team":"Hong Kong",                "rankChg":0,  "rating":78,  "change":"-"  },
+    { "rank":25, "code":"my",     "team":"Malaysia",                 "rankChg":1,  "rating":72,  "change":"+5", "highlight":"up" },
+    { "rank":26, "code":"it",     "team":"Italy",                    "rankChg":-1, "rating":68,  "change":"-"  },
+    { "rank":27, "code":"dk",     "team":"Denmark",                  "rankChg":0,  "rating":64,  "change":"-"  },
+    { "rank":28, "code":"pg",     "team":"Papua New Guinea",         "rankChg":0,  "rating":63,  "change":"-"  },
+    { "rank":29, "code":"bh",     "team":"Bahrain",                  "rankChg":0,  "rating":52,  "change":"-1" },
+    { "rank":30, "code":"tz",     "team":"Tanzania",                 "rankChg":0,  "rating":41,  "change":"-1" },
+    { "rank":31, "code":"ke",     "team":"Kenya",                    "rankChg":0,  "rating":40,  "change":"-1" },
+    { "rank":32, "code":"qa",     "team":"Qatar",                    "rankChg":0,  "rating":31,  "change":"-"  },
+    { "rank":33, "code":"vu",     "team":"Vanuatu",                  "rankChg":0,  "rating":30,  "change":"-1" },
+    { "rank":34, "code":"sg",     "team":"Singapore",                "rankChg":0,  "rating":22,  "change":"+6" },
+    { "rank":35, "code":"bm",     "team":"Bermuda",                  "rankChg":0,  "rating":5,   "change":"-"  }
+  ]
+}
+</script>
+
+<script src="team-rankings.js"></script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+/* ============================================================
+   theme.css — shared site chrome (header, tabs, subtabs, empty
+   states) + the "board" theme used by International Player
+   Rankings (Test / ODI / Women's ODI).
+   ============================================================ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --pitch:      #0e3b2c;
+  --pitch-deep: #082720;
+  --cream:      #f6efe0;
+  --cream-dim:  #e8ddc4;
+  --ball:       #a8281f;
+  --ball-bright:#c8342a;
+  --gold:       #d8ab3d;
+  --silver:     #b9c0c6;
+  --bronze:     #b8763f;
+  --ink:        #14201b;
+  --ink-soft:   #5b6a62;
+}
+
+html,body{
+  background: radial-gradient(circle at 20% -10%, #16513d 0%, var(--pitch) 45%, var(--pitch-deep) 100%);
+  min-height:100vh;
+  margin:0;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:44px 18px 60px;
+}
+
+/* ---------- site-level nav ---------- */
+.site-header{
+  width:100%;
+  max-width:1520px;
+  margin:0 auto 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.site-brand{ display:flex; align-items:baseline; gap:10px; }
+.site-brand .ball-dot{
+  width:12px;height:12px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, var(--ball-bright), var(--ball));
+  display:inline-block;
+  box-shadow:0 0 0 3px rgba(246,239,224,0.15);
+}
+.site-brand span{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:22px;
+  color:var(--cream);
+  letter-spacing:-0.3px;
+}
+.site-handle{
+  font-size:12.5px;
+  font-weight:600;
+  color:rgba(246,239,224,0.55);
+  letter-spacing:0.3px;
+}
+
+.tabs{
+  width:100%;
+  max-width:1520px;
+  margin:0 auto 18px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.tab-btn{
+  font-family:'Fraunces',serif;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:0.4px;
+  color:rgba(246,239,224,0.75);
+  background:rgba(246,239,224,0.08);
+  border:1px solid rgba(246,239,224,0.18);
+  border-radius:999px;
+  padding:9px 20px;
+  cursor:pointer;
+  transition:all 0.15s ease;
+}
+.tab-btn:hover{ background:rgba(246,239,224,0.14); color:var(--cream); }
+.tab-btn.active{
+  background:var(--cream);
+  color:var(--ink);
+  border-color:var(--cream);
+  box-shadow:0 4px 14px rgba(0,0,0,0.25);
+}
+
+/* ---------- sub-tabs (inside a section) ---------- */
+.subtabs{
+  width:100%;
+  max-width:1520px;
+  margin:0 auto 14px;
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.subtab-btn{
+  font-family:'Inter',sans-serif;
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:0.3px;
+  color:rgba(246,239,224,0.6);
+  background:transparent;
+  border:1px solid rgba(246,239,224,0.22);
+  border-radius:6px;
+  padding:6px 14px;
+  cursor:pointer;
+  transition:all 0.15s ease;
+}
+.subtab-btn:hover{ color:var(--cream); border-color:rgba(246,239,224,0.4); }
+.subtab-btn.active{ background:var(--ball); color:var(--cream); border-color:var(--ball); }
+
+/* ---------- section / panel containers ---------- */
+.section{ width:100%; display:none; }
+.section.active{ display:block; }
+.format-panel{ width:100%; max-width:1520px; margin:0 auto; display:none; }
+.format-panel.active{ display:block; }
+
+/* ---------- empty / placeholder state ---------- */
+.empty-card{
+  width:100%;
+  max-width:1520px;
+  margin:0 auto;
+  background:var(--cream);
+  border-radius:6px;
+  box-shadow:0 40px 90px rgba(0,0,0,0.45), 0 4px 0 rgba(0,0,0,0.15);
+  padding:70px 44px;
+  text-align:center;
+}
+.empty-card .empty-icon{
+  width:46px; height:46px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  background:var(--cream-dim);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:20px;
+  color:var(--ink-soft);
+  border:1px solid rgba(20,32,27,0.12);
+}
+.empty-card h2{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:24px;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+.empty-card p{
+  font-size:13.5px;
+  color:var(--ink-soft);
+  max-width:440px;
+  margin:0 auto;
+}
+
+.site-footer{
+  width:100%;
+  max-width:1520px;
+  margin:22px auto 0;
+  text-align:center;
+  font-size:11.5px;
+  color:rgba(246,239,224,0.4);
+}
+
+/* ============================================================
+   PLAYER RANKINGS "board" theme (Test / ODI / Women's ODI)
+   ============================================================ */
+
+.board{
+  width:100%;
+  background:var(--cream);
+  border-radius:6px;
+  position:relative;
+  box-shadow:0 40px 90px rgba(0,0,0,0.45), 0 4px 0 rgba(0,0,0,0.15);
+  overflow:hidden;
+}
+.board::before{
+  content:"";
+  display:block;
+  height:10px;
+  background:
+    repeating-linear-gradient(90deg, var(--ball) 0 22px, transparent 22px 30px),
+    linear-gradient(90deg, var(--ball-bright), var(--ball));
+}
+
+header.board-header{
+  padding:28px 44px 20px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  border-bottom:2px solid var(--ink);
+  flex-wrap:wrap;
+  gap:14px;
+}
+.eyebrow{
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:3.5px;
+  text-transform:uppercase;
+  color:var(--ball);
+  margin-bottom:8px;
+}
+.board-header h1{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:40px;
+  line-height:1;
+  color:var(--ink);
+  letter-spacing:-0.5px;
+}
+.board-header h1 span{ font-style:italic; font-weight:500; color:var(--ink-soft); }
+.meta{ text-align:right; font-size:13.5px; color:var(--ink-soft); }
+.meta strong{
+  display:block;
+  font-family:'Fraunces',serif;
+  font-size:18px;
+  font-weight:600;
+  color:var(--ink);
+}
+
+.halves{
+  display:grid;
+  grid-template-columns:1fr 1fr 40px 1fr 1fr;
+  grid-template-rows:auto auto;
+}
+.seam{ grid-row:1 / 3; grid-column:3; position:relative; background:var(--ball); }
+.seam::before{
+  content:"";
+  position:absolute; top:0; bottom:0; left:50%;
+  border-left:2.5px dashed var(--cream);
+  opacity:0.85;
+}
+.half-title{
+  grid-row:1;
+  font-family:'Fraunces',serif;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--ink);
+  padding:16px 26px 10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.half-title::after{ content:""; flex:1; height:1px; background:var(--ink); opacity:0.15; }
+.title-batters{ grid-column:1 / 3; }
+.title-bowlers{ grid-column:4 / 6; }
+
+.col{ grid-row:2; padding:0 0 14px; }
+.col-a{ grid-column:1; }
+.col-b{ grid-column:2; border-left:1px solid rgba(20,32,27,0.1); }
+.col-c{ grid-column:4; }
+.col-d{ grid-column:5; border-left:1px solid rgba(20,32,27,0.1); }
+
+.board table{ width:100%; border-collapse:collapse; }
+.board tbody tr{ border-bottom:1px solid rgba(20,32,27,0.08); }
+.board tbody tr:nth-child(even){ background:rgba(20,32,27,0.025); }
+.board tbody tr.row-up{ background:rgba(29,95,168,0.09); }
+.board tbody tr.row-down{ background:rgba(192,122,30,0.11); }
+
+.board td{
+  padding:8.5px 6px;
+  font-size:13.5px;
+  color:var(--ink);
+  vertical-align:middle;
+  white-space:nowrap;
+}
+.board td:first-child{ padding-left:26px; }
+.board td:last-child{ padding-right:20px; }
+
+.badge{
+  width:25px; height:25px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center; justify-content:center;
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:11px;
+  background:var(--cream-dim);
+  color:var(--ink-soft);
+  border:1px solid rgba(20,32,27,0.12);
+}
+tr.r1 .badge{ background:linear-gradient(145deg,#f0cd6c,var(--gold)); color:#4a3407; border:none; box-shadow:0 2px 5px rgba(216,171,61,0.55); }
+tr.r2 .badge{ background:linear-gradient(145deg,#e5eaee,var(--silver)); color:#33393e; border:none; box-shadow:0 2px 5px rgba(150,160,168,0.5); }
+tr.r3 .badge{ background:linear-gradient(145deg,#d69a63,var(--bronze)); color:#4a2c10; border:none; box-shadow:0 2px 5px rgba(184,118,63,0.5); }
+
+.flag{
+  max-width:20px; max-height:14px;
+  width:auto; height:auto;
+  object-fit:contain;
+  border-radius:2px;
+  box-shadow:0 0 0 1px rgba(0,0,0,0.15);
+  vertical-align:middle;
+}
+
+.name{ font-weight:600; font-size:13.5px; }
+tr.r1 .name, tr.r2 .name, tr.r3 .name{ font-weight:700; }
+.name.retired, .name.inactive{ font-style:italic; font-weight:500; color:var(--ink-soft); }
+.tag{
+  font-size:9px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase;
+  color:var(--ink-soft); margin-left:5px;
+}
+
+.move{ font-size:11.5px; font-weight:800; white-space:nowrap; display:inline-block; }
+.move.up   { color:#1d5fa8; }
+.move.down { color:#c07a1e; }
+.move.flat { color:#b7ae9a; }
+
+.notes{ display:grid; grid-template-columns:1fr 1fr; border-top:1px solid rgba(20,32,27,0.12); }
+.notes.notes-single{ grid-template-columns:1fr; }
+.notes-half{ padding:12px 44px 16px; display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 0; }
+.notes-half + .notes-half{ border-left:1px solid rgba(20,32,27,0.12); }
+.notes-label{
+  font-size:9.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--ink-soft); opacity:0.7; margin-right:12px;
+}
+.note-item{ font-size:11.5px; color:var(--ink-soft); display:inline-flex; align-items:baseline; gap:5px; margin-right:16px; }
+.note-item .n-flag{
+  max-width:13px; max-height:9px; width:auto; height:auto;
+  object-fit:contain; border-radius:1px; box-shadow:0 0 0 1px rgba(0,0,0,0.12);
+  vertical-align:middle; align-self:center;
+}
+.note-item .n-rank{ font-family:'Fraunces',serif; font-weight:600; opacity:0.6; }
+.note-item .n-name{ font-style:italic; }
+.note-item .n-tag{
+  font-size:8.5px; font-weight:700; letter-spacing:0.3px; text-transform:uppercase;
+  color:var(--ball); opacity:0.75;
+}
+
+footer.board-footer{
+  padding:16px 44px;
+  background:var(--ink);
+  color:rgba(246,239,224,0.6);
+  font-size:11px;
+  letter-spacing:0.3px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:6px;
+}
+footer.board-footer b{ color:var(--cream); }
+
+/* Standalone preview centering (used by test.html / odi.html / wodi.html) */
+body.player-page-body{
+  align-items:center;
+  justify-content:center;
+}
+.player-standalone-note{
+  width:100%; max-width:1520px; margin:0 auto 14px;
+  text-align:center; font-size:12px; color:rgba(246,239,224,0.55);
+}
+.player-standalone-note a{ color:var(--cream); text-decoration:underline; }
+
+@media (max-width:900px){
+  .halves{ grid-template-columns:1fr 1fr; }
+  .seam{ display:none; }
+  .title-bowlers{ grid-column:1/3; grid-row:3; margin-top:6px; }
+  .col-c{ grid-column:1; grid-row:4; }
+  .col-d{ grid-column:2; grid-row:4; border-left:1px solid rgba(20,32,27,0.1); }
+  .notes{ grid-template-columns:1fr; }
+  .notes-half + .notes-half{ border-left:none; border-top:1px solid rgba(20,32,27,0.12); }
+}

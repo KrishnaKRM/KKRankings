@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK's Indian Domestic First-class Rankings</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="domestic-theme.css">
+</head>
+<body class="domestic-page-body">
+<div style="width:820px;max-width:100%;">
+  <div class="domestic-standalone-note">Standalone preview — edit the data below in this file. <a href="index.html">← Back to full site</a></div>
+  <div id="domesticboard"></div>
+</div>
+
+<!-- ============================================================
+     EDIT THE RANKINGS DATA BELOW.
+     Each row: rank, team, rating, delta (rating point change, e.g. "+13","-1","—"),
+     arrow (position movement text, e.g. "↑6","↓3", or "" for no change),
+     rowClass: "champion" | "runner-up" | "gainer" | "loser" | null
+     ============================================================ -->
+<script type="application/json" id="rankingsData" data-prefix="ranji">
+{
+  "title": "KK's Indian Domestic First-class Rankings",
+  "subtitle": "Updated after 2025–2026 Ranji Trophy",
+  "championBorder": false,
+  "legend": [
+    { "type":"plain", "color":"#FFD700", "label":"Champion (Jammu & Kashmir)" },
+    { "type":"plain", "color":"#C0C0C0", "label":"Runner-up (Karnataka)" },
+    { "type":"plain", "color":"#2471A3", "label":"Top 3 Gainers" },
+    { "type":"plain", "color":"#D35400", "label":"Top 3 Losers" }
+  ],
+  "rows": [
+    { "rank":1,  "team":"Vidarbha",           "rating":140, "delta":"—",  "arrow":"" },
+    { "rank":2,  "team":"Mumbai",              "rating":130, "delta":"-1", "arrow":"" },
+    { "rank":3,  "team":"Bengal",              "rating":130, "delta":"+13","arrow":"↑6",  "rowClass":"gainer" },
+    { "rank":4,  "team":"Jammu & Kashmir", "rating":128, "delta":"+8", "arrow":"",    "rowClass":"champion" },
+    { "rank":5,  "team":"Karnataka",           "rating":121, "delta":"+3", "arrow":"↑1",  "rowClass":"runner-up" },
+    { "rank":6,  "team":"Gujarat",             "rating":121, "delta":"-8", "arrow":"↓3" },
+    { "rank":7,  "team":"Haryana",             "rating":119, "delta":"+4", "arrow":"↑3" },
+    { "rank":8,  "team":"Madhya Pradesh",      "rating":117, "delta":"—",  "arrow":"" },
+    { "rank":9,  "team":"Saurashtra",          "rating":117, "delta":"-1", "arrow":"↓2" },
+    { "rank":10, "team":"Uttarakhand",         "rating":113, "delta":"+13","arrow":"↑15", "rowClass":"gainer" },
+    { "rank":11, "team":"Andhra",              "rating":110, "delta":"+5", "arrow":"↑6" },
+    { "rank":12, "team":"Kerala",              "rating":110, "delta":"-5", "arrow":"↓1" },
+    { "rank":13, "team":"Baroda",              "rating":108, "delta":"-2", "arrow":"↓1" },
+    { "rank":14, "team":"Tamil Nadu",          "rating":108, "delta":"-10","arrow":"↓9",  "rowClass":"loser" },
+    { "rank":15, "team":"Maharashtra",         "rating":108, "delta":"+9", "arrow":"↑11", "rowClass":"gainer" },
+    { "rank":16, "team":"Services",            "rating":108, "delta":"-2", "arrow":"↓3" },
+    { "rank":17, "team":"Jharkhand",           "rating":108, "delta":"+7", "arrow":"↑5" },
+    { "rank":18, "team":"Railways",            "rating":106, "delta":"-3", "arrow":"↓4" },
+    { "rank":19, "team":"Chandigarh",          "rating":103, "delta":"+1", "arrow":"" },
+    { "rank":20, "team":"Rajasthan",           "rating":101, "delta":"-7", "arrow":"↓5" },
+    { "rank":21, "team":"Uttar Pradesh",       "rating":101, "delta":"+1", "arrow":"↑2" },
+    { "rank":22, "team":"Hyderabad",           "rating":101, "delta":"-7", "arrow":"↓6",  "rowClass":"loser" },
+    { "rank":23, "team":"Goa",                 "rating":100, "delta":"+3", "arrow":"↑4" },
+    { "rank":24, "team":"Delhi",               "rating":97,  "delta":"-6", "arrow":"↓6" },
+    { "rank":25, "team":"Himachal Pradesh",    "rating":97,  "delta":"-3", "arrow":"↓1" },
+    { "rank":26, "team":"Tripura",             "rating":97,  "delta":"-5", "arrow":"↓6" },
+    { "rank":27, "team":"Chhattisgarh",        "rating":97,  "delta":"+1", "arrow":"↑1" },
+    { "rank":28, "team":"Punjab",              "rating":95,  "delta":"-6", "arrow":"↓7",  "rowClass":"loser" },
+    { "rank":29, "team":"Odisha",              "rating":91,  "delta":"-3", "arrow":"" },
+    { "rank":30, "team":"Pondicherry",         "rating":85,  "delta":"+2", "arrow":"" },
+    { "rank":31, "team":"Assam",               "rating":81,  "delta":"-1", "arrow":"" },
+    { "rank":32, "team":"Nagaland",            "rating":75,  "delta":"+1", "arrow":"↑1" },
+    { "rank":33, "team":"Bihar",               "rating":75,  "delta":"+2", "arrow":"↑1" },
+    { "rank":34, "team":"Meghalaya",           "rating":73,  "delta":"-5", "arrow":"↓2" },
+    { "rank":35, "team":"Sikkim",              "rating":65,  "delta":"-3", "arrow":"" },
+    { "rank":36, "team":"Manipur",             "rating":61,  "delta":"-2", "arrow":"" },
+    { "rank":37, "team":"Mizoram",             "rating":56,  "delta":"-5", "arrow":"" },
+    { "rank":38, "team":"Arunachal",           "rating":32,  "delta":"-2", "arrow":"" }
+  ]
+}
+</script>
+
+<script src="domestic-rankings.js"></script>
+</body>
+</html>

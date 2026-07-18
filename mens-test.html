@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK's Test Team Rankings</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="team-theme.css">
+</head>
+<body class="team-page-body">
+<div style="width:100%;max-width:1240px;">
+  <div class="team-standalone-note">Standalone preview — edit the data below in this file. <a href="index.html">← Back to full site</a></div>
+  <div id="teamboard"></div>
+</div>
+
+<!-- ============================================================
+     EDIT THE RANKINGS DATA BELOW.
+     Each row: rank, code (flag country code), team, rankChg (position
+     movement), rating, change (rating point change, e.g. "+3","-2","-").
+     Use "svg" instead of "code" for West Indies / Ireland (no ISO flag).
+     "cols" controls how many side-by-side columns the table splits into.
+     ============================================================ -->
+<script type="application/json" id="rankingsData" data-prefix="mens-test">
+{
+  "title": "KK's Test <em>Rankings</em>",
+  "subtitle": "Updated as on 7 July 2026",
+  "footerNote": "Updated after England v New Zealand, India v Afghanistan, West Indies v Sri Lanka, & Zimbabwe v Bangladesh Tests",
+  "cols": 1,
+  "rows": [
+    { "rank":1,  "code":"au",     "team":"Australia",     "rankChg":0,  "rating":137, "change":"-1" },
+    { "rank":2,  "code":"za",     "team":"South Africa",  "rankChg":0,  "rating":131, "change":"-"  },
+    { "rank":3,  "code":"nz",     "team":"New Zealand",   "rankChg":1,  "rating":121, "change":"+3", "highlight":"up" },
+    { "rank":4,  "code":"gb-eng", "team":"England",       "rankChg":-1, "rating":118, "change":"-3", "highlight":"down" },
+    { "rank":5,  "code":"in",     "team":"India",         "rankChg":0,  "rating":118, "change":"+2" },
+    { "rank":6,  "code":"lk",     "team":"Sri Lanka",     "rankChg":0,  "rating":97,  "change":"-6", "highlight":"down" },
+    { "rank":7,  "code":"pk",     "team":"Pakistan",      "rankChg":1,  "rating":90,  "change":"-"  },
+    { "rank":8,  "svg":"https://upload.wikimedia.org/wikipedia/commons/1/10/Cricket_West_Indies_flag_2017.svg", "team":"West Indies", "rankChg":1, "rating":89, "change":"+3", "highlight":"up" },
+    { "rank":9,  "code":"bd",     "team":"Bangladesh",    "rankChg":-2, "rating":88,  "change":"-5", "highlight":"down" },
+    { "rank":10, "svg":"https://upload.wikimedia.org/wikipedia/commons/8/85/Flag_of_Cricket_Ireland.svg", "team":"Ireland", "rankChg":0, "rating":63, "change":"-" },
+    { "rank":11, "code":"zw",     "team":"Zimbabwe",      "rankChg":0,  "rating":49,  "change":"+7", "highlight":"up" }
+  ]
+}
+</script>
+
+<script src="team-rankings.js"></script>
+</body>
+</html>

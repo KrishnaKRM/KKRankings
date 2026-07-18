@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK's ODI Player Rankings</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+</head>
+<body class="player-page-body">
+<div style="width:100%;max-width:1520px;">
+  <div class="player-standalone-note">Standalone preview — edit the data below in this file. <a href="index.html">← Back to full site</a></div>
+
+  <div class="board">
+    <header class="board-header">
+      <div>
+        <div class="eyebrow">#KKRankings · @KrishnaKRM</div>
+        <h1>KK's Top 20 <span id="odi-title">ODI Batters & Bowlers</span></h1>
+      </div>
+      <div class="meta"><strong id="odi-asof">July 2026</strong></div>
+    </header>
+    <div class="halves">
+      <div class="half-title title-batters">Batters</div>
+      <div class="seam"></div>
+      <div class="half-title title-bowlers">Bowlers</div>
+      <div class="col col-a"><table><tbody id="odi-battersA"></tbody></table></div>
+      <div class="col col-b"><table><tbody id="odi-battersB"></tbody></table></div>
+      <div class="col col-c"><table><tbody id="odi-bowlersA"></tbody></table></div>
+      <div class="col col-d"><table><tbody id="odi-bowlersB"></tbody></table></div>
+    </div>
+    <div class="notes notes-single">
+      <div class="notes-half">
+        <span class="notes-label">Retired</span>
+        <span id="odi-notesBatting"></span>
+      </div>
+    </div>
+    <footer class="board-footer"><span>Rankings as on <b id="odi-footerdate">1 July 2026</b></span></footer>
+  </div>
+</div>
+
+<!-- ============================================================
+     EDIT THE RANKINGS DATA BELOW.
+     Each row: rank, code (flag country code), name, chg (rank move,
+     e.g. 2, -1, 0). Use "svg" instead of "code" for West Indies /
+     Ireland (no ISO flag).
+     ============================================================ -->
+<script type="application/json" id="rankingsData" data-prefix="odi">
+{
+  "title": "ODI Batters & Bowlers",
+  "asOf": "July 2026",
+  "footerDate": "1 July 2026",
+  "batters": [
+    { "rank":1,  "code":"in",     "name":"Shubman Gill",         "chg":4  },
+    { "rank":2,  "code":"nz",     "name":"Daryl Mitchell",       "chg":-1 },
+    { "rank":3,  "code":"in",     "name":"Rohit Sharma",         "chg":0  },
+    { "rank":4,  "code":"in",     "name":"Virat Kohli",          "chg":-2 },
+    { "rank":5,  "code":"lk",     "name":"Kusal Mendis",         "chg":-1 },
+    { "rank":6,  "svg":"https://upload.wikimedia.org/wikipedia/commons/1/10/Cricket_West_Indies_flag_2017.svg", "name":"Shai Hope", "chg":3 },
+    { "rank":7,  "code":"in",     "name":"KL Rahul",             "chg":0  },
+    { "rank":8,  "code":"af",     "name":"Ibrahim Zadran",       "chg":-2 },
+    { "rank":9,  "code":"lk",     "name":"Charith Asalanka",     "chg":-1 },
+    { "rank":10, "code":"pk",     "name":"Mohammad Rizwan",      "chg":0  },
+    { "rank":11, "code":"af",     "name":"Azmatullah Omarzai",   "chg":3  },
+    { "rank":12, "code":"gb-eng", "name":"Joe Root",             "chg":-1 },
+    { "rank":13, "code":"bd",     "name":"Towhid Hridoy",        "chg":6  },
+    { "rank":14, "code":"af",     "name":"Rahmanullah Gurbaz",   "chg":8  },
+    { "rank":15, "code":"lk",     "name":"Pathum Nissanka",      "chg":-3 },
+    { "rank":16, "code":"bd",     "name":"Najmul Hossain Shanto","chg":2  },
+    { "rank":17, "code":"in",     "name":"Shreyas Iyer",         "chg":-2 },
+    { "rank":18, "code":"pk",     "name":"Babar Azam",           "chg":-2 },
+    { "rank":19, "code":"au",     "name":"Travis Head",          "chg":-6 },
+    { "rank":20, "code":"gb-eng", "name":"Harry Brook",          "chg":1  }
+  ],
+  "bowlers": [
+    { "rank":1,  "code":"af",     "name":"Rashid Khan",          "chg":0  },
+    { "rank":2,  "code":"in",     "name":"Kuldeep Yadav",        "chg":0  },
+    { "rank":3,  "code":"gb-eng", "name":"Adil Rashid",          "chg":0  },
+    { "rank":4,  "code":"nz",     "name":"Mitchell Santner",     "chg":0  },
+    { "rank":5,  "code":"pk",     "name":"Abrar Ahmed",          "chg":3  },
+    { "rank":6,  "code":"za",     "name":"Keshav Maharaj",       "chg":-1 },
+    { "rank":7,  "code":"lk",     "name":"Maheesh Theekshana",   "chg":0  },
+    { "rank":8,  "code":"nz",     "name":"Matt Henry",           "chg":-2 },
+    { "rank":9,  "code":"pk",     "name":"Shaheen Shah Afridi",  "chg":1  },
+    { "rank":10, "code":"lk",     "name":"Wanindu Hasaranga",    "chg":-1 },
+    { "rank":11, "code":"in",     "name":"Ravindra Jadeja",      "chg":0  },
+    { "rank":12, "code":"nz",     "name":"Michael Bracewell",    "chg":2  },
+    { "rank":13, "code":"pk",     "name":"Haris Rauf",           "chg":-1 },
+    { "rank":14, "code":"gb-eng", "name":"Jofra Archer",         "chg":2  },
+    { "rank":15, "code":"af",     "name":"Mohammad Nabi",        "chg":-2 },
+    { "rank":16, "code":"om",     "name":"Shakeel Ahmed",        "chg":5  },
+    { "rank":17, "code":"au",     "name":"Josh Hazlewood",       "chg":3  },
+    { "rank":18, "svg":"https://upload.wikimedia.org/wikipedia/commons/1/10/Cricket_West_Indies_flag_2017.svg", "name":"Gudakesh Motie", "chg":1 },
+    { "rank":19, "code":"bd",     "name":"Mehidy Hasan Miraz",   "chg":3  },
+    { "rank":20, "svg":"https://upload.wikimedia.org/wikipedia/commons/1/10/Cricket_West_Indies_flag_2017.svg", "name":"Jayden Seales", "chg":5 }
+  ],
+  "footnotesBatting": [
+    { "rank":20, "code":"za", "name":"Heinrich Klaasen", "tag":"Retired" }
+  ],
+  "footnotesBowling": []
+}
+</script>
+
+<script src="rankings.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK's Women's ODI Player Rankings</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+</head>
+<body class="player-page-body">
+<div style="width:100%;max-width:1520px;">
+  <div class="player-standalone-note">Standalone preview — edit the data below in this file. <a href="index.html">← Back to full site</a></div>
+
+  <div class="board">
+    <header class="board-header">
+      <div>
+        <div class="eyebrow">#KKRankings · @KrishnaKRM</div>
+        <h1>KK's Top 20 <span id="wodi-title">Women's ODI Batters & Bowlers</span></h1>
+      </div>
+      <div class="meta"><strong id="wodi-asof">July 2026</strong></div>
+    </header>
+    <div class="halves">
+      <div class="half-title title-batters">Batters</div>
+      <div class="seam"></div>
+      <div class="half-title title-bowlers">Bowlers</div>
+      <div class="col col-a"><table><tbody id="wodi-battersA"></tbody></table></div>
+      <div class="col col-b"><table><tbody id="wodi-battersB"></tbody></table></div>
+      <div class="col col-c"><table><tbody id="wodi-bowlersA"></tbody></table></div>
+      <div class="col col-d"><table><tbody id="wodi-bowlersB"></tbody></table></div>
+    </div>
+    <div class="notes notes-single">
+      <div class="notes-half">
+        <span class="notes-label">Retired</span>
+        <span id="wodi-notesBatting"></span>
+      </div>
+    </div>
+    <footer class="board-footer"><span>Rankings as on <b id="wodi-footerdate">1 July 2026</b></span></footer>
+  </div>
+</div>
+
+<!-- ============================================================
+     EDIT THE RANKINGS DATA BELOW.
+     Each row: rank, code (flag country code), name, chg (rank move,
+     e.g. 2, -1, 0). Use "svg" instead of "code" for West Indies /
+     Ireland (no ISO flag).
+     ============================================================ -->
+<script type="application/json" id="rankingsData" data-prefix="wodi">
+{
+  "title": "Women's ODI Batters & Bowlers",
+  "asOf": "July 2026",
+  "footerDate": "1 July 2026",
+  "batters": [
+    { "rank":1,  "code":"in",     "name":"Smriti Mandhana",         "chg":0  },
+    { "rank":2,  "code":"za",     "name":"Laura Wolvaardt",         "chg":0  },
+    { "rank":3,  "code":"pk",     "name":"Sidra Amin",              "chg":0  },
+    { "rank":4,  "code":"nz",     "name":"Maddy Green",             "chg":1  },
+    { "rank":5,  "svg":"https://upload.wikimedia.org/wikipedia/commons/1/10/Cricket_West_Indies_flag_2017.svg", "name":"Hayley Matthews", "chg":-1 },
+    { "rank":6,  "code":"au",     "name":"Beth Mooney",             "chg":0  },
+    { "rank":7,  "code":"au",     "name":"Phoebe Litchfield",       "chg":0  },
+    { "rank":8,  "code":"gb-eng", "name":"Nat Sciver-Brunt",        "chg":0  },
+    { "rank":9,  "code":"gb-eng", "name":"Amy Jones",               "chg":0  },
+    { "rank":10, "code":"lk",     "name":"Harshitha Samarawickrama","chg":0  },
+    { "rank":11, "code":"bd",     "name":"Sharmin Akhter",          "chg":1  },
+    { "rank":12, "code":"gb-eng", "name":"Tammy Beaumont",          "chg":-1 },
+    { "rank":13, "code":"au",     "name":"Ash Gardner",             "chg":0  },
+    { "rank":14, "code":"au",     "name":"Annabel Sutherland",      "chg":1  },
+    { "rank":15, "code":"za",     "name":"Tanzim Brits",            "chg":3  },
+    { "rank":16, "code":"in",     "name":"Jemimah Rodrigues",       "chg":0  },
+    { "rank":17, "code":"gb-sct", "name":"Katheryn Bryce",          "chg":0  },
+    { "rank":18, "code":"nz",     "name":"Amelia Kerr",             "chg":4  },
+    { "rank":19, "code":"nz",     "name":"Brooke Halliday",         "chg":1  },
+    { "rank":20, "code":"za",     "name":"Marizanne Kapp",          "chg":-1 }
+  ],
+  "bowlers": [
+    { "rank":1,  "code":"in",     "name":"Deepti Sharma",           "chg":0  },
+    { "rank":2,  "code":"au",     "name":"Alana King",              "chg":1  },
+    { "rank":3,  "code":"gb-eng", "name":"Sophie Ecclestone",       "chg":-1 },
+    { "rank":4,  "code":"au",     "name":"Ash Gardner",             "chg":0  },
+    { "rank":5,  "code":"au",     "name":"Kim Garth",               "chg":0  },
+    { "rank":6,  "code":"au",     "name":"Annabel Sutherland",      "chg":0  },
+    { "rank":7,  "code":"za",     "name":"Nonkululeko Mlaba",       "chg":0  },
+    { "rank":8,  "svg":"https://upload.wikimedia.org/wikipedia/commons/1/10/Cricket_West_Indies_flag_2017.svg", "name":"Hayley Matthews", "chg":0 },
+    { "rank":9,  "code":"za",     "name":"Marizanne Kapp",          "chg":1  },
+    { "rank":10, "code":"pk",     "name":"Sadia Iqbal",             "chg":-1 },
+    { "rank":11, "code":"gb-eng", "name":"Charlie Dean",            "chg":0  },
+    { "rank":12, "code":"au",     "name":"Megan Schutt",            "chg":0  },
+    { "rank":13, "code":"in",     "name":"Sneh Rana",               "chg":2  },
+    { "rank":14, "code":"nz",     "name":"Jess Kerr",               "chg":0  },
+    { "rank":15, "code":"bd",     "name":"Nahida Akter",            "chg":-2 },
+    { "rank":16, "code":"nz",     "name":"Amelia Kerr",             "chg":2  },
+    { "rank":17, "code":"in",     "name":"Renuka Singh",            "chg":0  },
+    { "rank":18, "code":"pk",     "name":"Nashra Sandhu",           "chg":1  },
+    { "rank":19, "code":"lk",     "name":"Inoka Ranaweera",         "chg":4  },
+    { "rank":20, "code":"gb-eng", "name":"Linsey Smith",            "chg":0  }
+  ],
+  "footnotesBatting": [
+    { "rank":11, "code":"au", "name":"Alyssa Healy",  "tag":"Retired" },
+    { "rank":19, "code":"nz", "name":"Sophie Devine", "tag":"Retired" }
+  ],
+  "footnotesBowling": []
+}
+</script>
+
+<script src="rankings.js"></script>
+</body>
+</html>

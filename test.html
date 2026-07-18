@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK's Test Player Rankings</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+</head>
+<body class="player-page-body">
+<div style="width:100%;max-width:1520px;">
+  <div class="player-standalone-note">Standalone preview — edit the data below in this file. <a href="index.html">← Back to full site</a></div>
+
+  <div class="board">
+    <header class="board-header">
+      <div>
+        <div class="eyebrow">#KKRankings · @KrishnaKRM</div>
+        <h1>KK's Top 20 <span id="test-title">Test Batters & Bowlers</span></h1>
+      </div>
+      <div class="meta"><strong id="test-asof">July 2026</strong></div>
+    </header>
+    <div class="halves">
+      <div class="half-title title-batters">Batters</div>
+      <div class="seam"></div>
+      <div class="half-title title-bowlers">Bowlers</div>
+      <div class="col col-a"><table><tbody id="test-battersA"></tbody></table></div>
+      <div class="col col-b"><table><tbody id="test-battersB"></tbody></table></div>
+      <div class="col col-c"><table><tbody id="test-bowlersA"></tbody></table></div>
+      <div class="col col-d"><table><tbody id="test-bowlersB"></tbody></table></div>
+    </div>
+    <div class="notes">
+      <div class="notes-half">
+        <span class="notes-label">Retired</span>
+        <span id="test-notesBatting"></span>
+      </div>
+      <div class="notes-half">
+        <span class="notes-label">Retired / Inactive</span>
+        <span id="test-notesBowling"></span>
+      </div>
+    </div>
+    <footer class="board-footer"><span>Rankings as on <b id="test-footerdate">1 July 2026</b></span></footer>
+  </div>
+</div>
+
+<!-- ============================================================
+     EDIT THE RANKINGS DATA BELOW.
+     Each row: rank, code (flag country code), name, chg (rank move,
+     e.g. 2, -1, 0). Use "svg" instead of "code" for West Indies /
+     Ireland (no ISO flag). footnote rows also take a "tag":
+     "Retired" | "Inactive".
+     ============================================================ -->
+<script type="application/json" id="rankingsData" data-prefix="test">
+{
+  "title": "Test Batters & Bowlers",
+  "asOf": "July 2026",
+  "footerDate": "1 July 2026",
+  "batters": [
+    { "rank":1,  "code":"au",     "name":"Travis Head",        "chg":0  },
+    { "rank":2,  "code":"gb-eng", "name":"Joe Root",            "chg":0  },
+    { "rank":3,  "code":"gb-eng", "name":"Harry Brook",         "chg":2  },
+    { "rank":4,  "code":"au",     "name":"Steve Smith",         "chg":-1 },
+    { "rank":5,  "code":"in",     "name":"Yashasvi Jaiswal",    "chg":-1 },
+    { "rank":6,  "code":"in",     "name":"Shubman Gill",        "chg":1  },
+    { "rank":7,  "code":"za",     "name":"Temba Bavuma",        "chg":-1 },
+    { "rank":8,  "code":"nz",     "name":"Rachin Ravindra",     "chg":3  },
+    { "rank":9,  "code":"au",     "name":"Alex Carey",          "chg":0  },
+    { "rank":10, "code":"lk",     "name":"Kamindu Mendis",      "chg":-2 },
+    { "rank":11, "code":"in",     "name":"Rishabh Pant",        "chg":1  },
+    { "rank":12, "code":"lk",     "name":"Dinesh Chandimal",    "chg":4  },
+    { "rank":13, "code":"pk",     "name":"Mohammad Rizwan",     "chg":0  },
+    { "rank":14, "code":"za",     "name":"Aiden Markram",       "chg":0  },
+    { "rank":15, "code":"in",     "name":"Ravindra Jadeja",     "chg":0  },
+    { "rank":16, "code":"gb-eng", "name":"Ben Duckett",         "chg":4  },
+    { "rank":17, "code":"pk",     "name":"Saud Shakeel",        "chg":0  },
+    { "rank":18, "code":"za",     "name":"Wiaan Mulder",        "chg":0  },
+    { "rank":19, "code":"in",     "name":"KL Rahul",            "chg":0  },
+    { "rank":20, "code":"nz",     "name":"Devon Conway",        "chg":8  }
+  ],
+  "bowlers": [
+    { "rank":1,  "code":"in",     "name":"Jasprit Bumrah",      "chg":0  },
+    { "rank":2,  "code":"nz",     "name":"Matt Henry",          "chg":0  },
+    { "rank":3,  "code":"au",     "name":"Mitchell Starc",      "chg":0  },
+    { "rank":4,  "code":"pk",     "name":"Noman Ali",           "chg":0  },
+    { "rank":5,  "code":"gb-eng", "name":"Gus Atkinson",        "chg":3  },
+    { "rank":6,  "code":"au",     "name":"Scott Boland",        "chg":0  },
+    { "rank":7,  "code":"au",     "name":"Pat Cummins",         "chg":-2 },
+    { "rank":8,  "code":"za",     "name":"Kagiso Rabada",       "chg":-1 },
+    { "rank":9,  "code":"za",     "name":"Simon Harmer",        "chg":0  },
+    { "rank":10, "code":"au",     "name":"Josh Hazlewood",      "chg":2  },
+    { "rank":11, "code":"za",     "name":"Marco Jansen",        "chg":0  },
+    { "rank":12, "code":"nz",     "name":"Jacob Duffy",         "chg":-2 },
+    { "rank":13, "code":"za",     "name":"Keshav Maharaj",      "chg":0  },
+    { "rank":14, "code":"au",     "name":"Nathan Lyon",         "chg":0  },
+    { "rank":15, "svg":"https://upload.wikimedia.org/wikipedia/commons/1/10/Cricket_West_Indies_flag_2017.svg", "name":"Kemar Roach", "chg":12 },
+    { "rank":16, "code":"gb-eng", "name":"Brydon Carse",        "chg":0  },
+    { "rank":17, "code":"in",     "name":"Ravindra Jadeja",     "chg":0  },
+    { "rank":18, "code":"in",     "name":"Kuldeep Yadav",       "chg":1  },
+    { "rank":19, "code":"lk",     "name":"Asitha Fernando",     "chg":1  },
+    { "rank":20, "code":"za",     "name":"Senuran Muthusamy",   "chg":3  }
+  ],
+  "footnotesBatting": [
+    { "rank":10, "code":"nz",     "name":"Kane Williamson", "tag":"Retired" }
+  ],
+  "footnotesBowling": [
+    { "rank":15, "code":"gb-eng", "name":"Chris Woakes",      "tag":"Retired"  },
+    { "rank":15, "code":"gb-eng", "name":"Ben Stokes",        "tag":"Retired"  },
+    { "rank":20, "code":"au",     "name":"Matthew Kuhnemann", "tag":"Inactive" }
+  ]
+}
+</script>
+
+<script src="rankings.js"></script>
+</body>
+</html>

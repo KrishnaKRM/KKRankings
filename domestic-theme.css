@@ -1,0 +1,184 @@
+/* ============================================================
+   domestic-theme.css — Indian Domestic Rankings, unified with
+   the board theme used across the site (cream/pitch-green,
+   Fraunces + Inter). Class names are unchanged so
+   domestic-rankings.js needs no edits.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root{
+  --pitch:      #0e3b2c;
+  --pitch-deep: #082720;
+  --cream:      #f6efe0;
+  --cream-dim:  #e8ddc4;
+  --ball:       #a8281f;
+  --ball-bright:#c8342a;
+  --gold:       #d8ab3d;
+  --silver:     #b9c0c6;
+  --bronze:     #b8763f;
+  --ink:        #14201b;
+  --ink-soft:   #5b6a62;
+  --up:         #1d5fa8;
+  --down:       #c07a1e;
+}
+
+.domestic-page-body {
+  background: radial-gradient(circle at 20% -10%, #16513d 0%, var(--pitch) 45%, var(--pitch-deep) 100%);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.domestic-container {
+  background: var(--cream);
+  border-radius: 6px;
+  width: 1240px;
+  max-width: 100%;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.45), 0 4px 0 rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.domestic-top-bar {
+  height: 10px;
+  background:
+    repeating-linear-gradient(90deg, var(--ball) 0 22px, transparent 22px 30px),
+    linear-gradient(90deg, var(--ball-bright), var(--ball));
+}
+
+.domestic-header-area {
+  padding: 28px 44px 20px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.eyebrow{
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--ball);
+  margin-bottom: 8px;
+}
+
+.domestic-header-area h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+.domestic-body-area { padding: 18px 30px 4px; }
+
+.domestic-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-bottom: 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.domestic-legend-item { display: flex; align-items: center; gap: 7px; }
+.domestic-legend-box {
+  width: 14px; height: 14px;
+  border: 1px solid rgba(20,32,27,0.2);
+  flex-shrink: 0;
+  border-radius: 3px;
+}
+.domestic-legend-box.dual { border-left: 4px solid var(--up); }
+
+.domestic-tables-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 3px 1fr;
+  align-items: start;
+}
+.domestic-divider {
+  background: var(--ball);
+  align-self: stretch;
+  margin: 0 12px;
+  border-radius: 2px;
+}
+
+.domestic-tables-wrapper table { width: 100%; border-collapse: collapse; }
+.domestic-tables-wrapper thead tr { background: var(--cream-dim); border-bottom: 1.5px solid rgba(20,32,27,0.15); }
+.domestic-tables-wrapper thead th {
+  padding: 10px 5px;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+.domestic-tables-wrapper thead th.team-col { text-align: left; padding-left: 10px; }
+
+.domestic-tables-wrapper tbody tr { height: 34px; border-bottom: 1px solid rgba(20,32,27,0.08); }
+.domestic-tables-wrapper tbody td {
+  padding: 0 5px;
+  text-align: center;
+  color: var(--ink);
+  font-size: 13.5px;
+}
+.domestic-tables-wrapper tbody td.team-col { text-align: left; padding-left: 10px; font-weight: 600; font-size: 13.5px; }
+.domestic-tables-wrapper tbody tr:nth-child(odd)  { background-color: var(--cream); }
+.domestic-tables-wrapper tbody tr:nth-child(even) { background-color: rgba(20,32,27,0.025); }
+
+.domestic-arrow-col  { width: 26px; font-size: 11px; font-weight: 800; color: var(--ink-soft); }
+.domestic-rank-col   { width: 34px; font-weight: 700; }
+.domestic-rating-col { width: 46px; font-family: 'Fraunces', serif; font-weight: 700; }
+.domestic-delta-col  { width: 38px; font-size: 12.5px; font-weight: 700; }
+
+.domestic-rank-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 12px;
+}
+.domestic-rank-gold   { background: linear-gradient(145deg,#f0cd6c,var(--gold)); color: #4a3407; box-shadow: 0 2px 5px rgba(216,171,61,0.55); }
+.domestic-rank-silver { background: linear-gradient(145deg,#e5eaee,var(--silver)); color: #33393e; box-shadow: 0 2px 5px rgba(150,160,168,0.5); }
+.domestic-rank-bronze { background: linear-gradient(145deg,#d69a63,var(--bronze)); color: #4a2c10; box-shadow: 0 2px 5px rgba(184,118,63,0.5); }
+
+tr.domestic-champion  td { background-color: rgba(216,171,61,0.18) !important; font-weight: 700; color: var(--ink); }
+tr.domestic-runner-up td { background-color: rgba(185,192,198,0.28) !important; font-weight: 700; color: var(--ink); }
+tr.domestic-gainer    td { background-color: rgba(29,95,168,0.10) !important; color: var(--up) !important; font-weight: 700; }
+tr.domestic-loser     td { background-color: rgba(192,122,30,0.12) !important; color: var(--down) !important; font-weight: 700; }
+
+.domestic-container.with-champion-border tr.domestic-champion  td:first-child,
+.domestic-container.with-champion-border tr.domestic-runner-up td:first-child {
+  border-left: 4px solid var(--ball);
+}
+
+.domestic-pos { color: var(--up); font-weight: 800; }
+.domestic-neg { color: var(--down); font-weight: 800; }
+
+.domestic-footer{
+  padding: 16px 44px;
+  background: var(--ink);
+  color: rgba(246,239,224,0.6);
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.domestic-footer b{ color: var(--cream); }
+
+.domestic-standalone-note{
+  width: 1240px; max-width: 100%; margin: 0 auto 14px;
+  font-size: 12px; color: rgba(246,239,224,0.55); text-align: center;
+}
+.domestic-standalone-note a{ color: var(--cream); text-decoration: underline; }

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK's Rankings — Cricket Team & Player Rankings</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="team-theme.css">
+<link rel="stylesheet" href="domestic-theme.css">
+</head>
+<body>
+
+  <div class="site-header">
+    <div class="site-brand">
+      <span class="ball-dot"></span>
+      <span>KK's Rankings</span>
+    </div>
+    <div class="site-handle">#KKRankings · @KrishnaKRM</div>
+  </div>
+
+  <div class="tabs" id="topTabs">
+    <button class="tab-btn active" data-section="intl-team">International Team Rankings</button>
+    <button class="tab-btn" data-section="intl-player">International Player Rankings</button>
+    <button class="tab-btn" data-section="domestic">Indian Domestic Team Rankings</button>
+    <button class="tab-btn" data-section="others">Others</button>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 1: International Team Rankings                       -->
+  <!-- Each panel is filled in automatically at load time by         -->
+  <!-- fetching mens-test.html / mens-odi.html / mens-t20i.html /    -->
+  <!-- womens-odi.html / womens-t20i.html — edit rankings by editing -->
+  <!-- THOSE files, not this one.                                    -->
+  <!-- ============================================================ -->
+  <div class="section active" id="section-intl-team">
+
+    <div class="subtabs" id="teamSubtabs">
+      <button class="subtab-btn active" data-tab="mens-test">Men's Test</button>
+      <button class="subtab-btn" data-tab="mens-odi">Men's ODI</button>
+      <button class="subtab-btn" data-tab="mens-t20i">Men's T20I</button>
+      <button class="subtab-btn" data-tab="womens-odi">Women's ODI</button>
+      <button class="subtab-btn" data-tab="womens-t20i">Women's T20I</button>
+    </div>
+
+    <div class="team-page-body" style="min-height:0;padding:24px 18px 44px;">
+      <div class="format-panel active" id="team-panel-mens-test"><div id="teamboard-mens-test"></div></div>
+      <div class="format-panel" id="team-panel-mens-odi"><div id="teamboard-mens-odi"></div></div>
+      <div class="format-panel" id="team-panel-mens-t20i"><div id="teamboard-mens-t20i"></div></div>
+      <div class="format-panel" id="team-panel-womens-odi"><div id="teamboard-womens-odi"></div></div>
+      <div class="format-panel" id="team-panel-womens-t20i"><div id="teamboard-womens-t20i"></div></div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 2: International Player Rankings (Test/ODI/W-ODI)    -->
+  <!-- Each panel's rows are filled in automatically at load time   -->
+  <!-- by fetching test.html / odi.html / wodi.html — edit the      -->
+  <!-- rankings by editing THOSE files, not this one.                -->
+  <!-- ============================================================ -->
+  <div class="section" id="section-intl-player">
+
+    <div class="subtabs" id="playerSubtabs">
+      <button class="subtab-btn active" data-tab="test">Test</button>
+      <button class="subtab-btn" data-tab="odi">ODI</button>
+      <button class="subtab-btn" data-tab="wodi">Women's ODI</button>
+    </div>
+
+    <!-- ============ TEST PANEL ============ -->
+    <div class="format-panel active" id="panel-test">
+      <div class="board">
+        <header class="board-header">
+          <div>
+            <div class="eyebrow">#KKRankings · @KrishnaKRM</div>
+            <h1>KK's Top 20 <span id="test-title">Test Batters & Bowlers</span></h1>
+          </div>
+          <div class="meta"><strong id="test-asof">July 2026</strong></div>
+        </header>
+        <div class="halves">
+          <div class="half-title title-batters">Batters</div>
+          <div class="seam"></div>
+          <div class="half-title title-bowlers">Bowlers</div>
+          <div class="col col-a"><table><tbody id="test-battersA"></tbody></table></div>
+          <div class="col col-b"><table><tbody id="test-battersB"></tbody></table></div>
+          <div class="col col-c"><table><tbody id="test-bowlersA"></tbody></table></div>
+          <div class="col col-d"><table><tbody id="test-bowlersB"></tbody></table></div>
+        </div>
+        <div class="notes">
+          <div class="notes-half">
+            <span class="notes-label">Retired</span>
+            <span id="test-notesBatting"></span>
+          </div>
+          <div class="notes-half">
+            <span class="notes-label">Retired / Inactive</span>
+            <span id="test-notesBowling"></span>
+          </div>
+        </div>
+        <footer class="board-footer"><span>Rankings as on <b>1 July 2026</b></span></footer>
+      </div>
+    </div>
+
+    <!-- ============ ODI PANEL ============ -->
+    <div class="format-panel" id="panel-odi">
+      <div class="board">
+        <header class="board-header">
+          <div>
+            <div class="eyebrow">#KKRankings · @KrishnaKRM</div>
+            <h1>KK's Top 20 <span id="odi-title">ODI Batters & Bowlers</span></h1>
+          </div>
+          <div class="meta"><strong id="odi-asof">July 2026</strong></div>
+        </header>
+        <div class="halves">
+          <div class="half-title title-batters">Batters</div>
+          <div class="seam"></div>
+          <div class="half-title title-bowlers">Bowlers</div>
+          <div class="col col-a"><table><tbody id="odi-battersA"></tbody></table></div>
+          <div class="col col-b"><table><tbody id="odi-battersB"></tbody></table></div>
+          <div class="col col-c"><table><tbody id="odi-bowlersA"></tbody></table></div>
+          <div class="col col-d"><table><tbody id="odi-bowlersB"></tbody></table></div>
+        </div>
+        <div class="notes notes-single">
+          <div class="notes-half">
+            <span class="notes-label">Retired</span>
+            <span id="odi-notesBatting"></span>
+          </div>
+        </div>
+        <footer class="board-footer"><span>Rankings as on <b>1 July 2026</b></span></footer>
+      </div>
+    </div>
+
+    <!-- ============ WOMEN'S ODI PANEL ============ -->
+    <div class="format-panel" id="panel-wodi">
+      <div class="board">
+        <header class="board-header">
+          <div>
+            <div class="eyebrow">#KKRankings · @KrishnaKRM</div>
+            <h1>KK's Top 20 <span id="wodi-title">Women's ODI Batters & Bowlers</span></h1>
+          </div>
+          <div class="meta"><strong id="wodi-asof">July 2026</strong></div>
+        </header>
+        <div class="halves">
+          <div class="half-title title-batters">Batters</div>
+          <div class="seam"></div>
+          <div class="half-title title-bowlers">Bowlers</div>
+          <div class="col col-a"><table><tbody id="wodi-battersA"></tbody></table></div>
+          <div class="col col-b"><table><tbody id="wodi-battersB"></tbody></table></div>
+          <div class="col col-c"><table><tbody id="wodi-bowlersA"></tbody></table></div>
+          <div class="col col-d"><table><tbody id="wodi-bowlersB"></tbody></table></div>
+        </div>
+        <div class="notes notes-single">
+          <div class="notes-half">
+            <span class="notes-label">Retired</span>
+            <span id="wodi-notesBatting"></span>
+          </div>
+        </div>
+        <footer class="board-footer"><span>Rankings as on <b>1 July 2026</b></span></footer>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 3: Indian Domestic Team Rankings                      -->
+  <!-- Each panel is filled in automatically at load time by         -->
+  <!-- fetching ranji.html / vijay-hazare.html / smat.html — edit    -->
+  <!-- rankings by editing THOSE files, not this one.                -->
+  <!-- ============================================================ -->
+  <div class="section" id="section-domestic">
+
+    <div class="subtabs" id="domesticSubtabs">
+      <button class="subtab-btn active" data-tab="ranji">Ranji Trophy</button>
+      <button class="subtab-btn" data-tab="vijay-hazare">Vijay Hazare Trophy</button>
+      <button class="subtab-btn" data-tab="smat">Syed Mushtaq Ali Trophy</button>
+    </div>
+
+    <div class="domestic-page-body" style="min-height:0;padding:24px 18px 44px;">
+      <div class="format-panel active" id="domestic-panel-ranji"><div id="domesticboard-ranji"></div></div>
+      <div class="format-panel" id="domestic-panel-vijay-hazare"><div id="domesticboard-vijay-hazare"></div></div>
+      <div class="format-panel" id="domestic-panel-smat"><div id="domesticboard-smat"></div></div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 4: Others (Vitality Blast, etc — placeholder)        -->
+  <!-- ============================================================ -->
+  <div class="section" id="section-others">
+    <div class="empty-card">
+      <div class="empty-icon">🏏</div>
+      <h2>Others</h2>
+      <p>Coming soon.</p>
+    </div>
+  </div>
+
+  <div class="site-footer">KK's Rankings · Updated monthly · #KKRankings</div>
+
+<script src="rankings.js"></script>
+<script src="team-rankings.js"></script>
+<script src="domestic-rankings.js"></script>
+<script>
+/* ---------------- TOP-LEVEL SECTION SWITCHING ---------------- */
+
+document.querySelectorAll("#topTabs .tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#topTabs .tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(`section-${btn.dataset.section}`).classList.add("active");
+  });
+});
+
+/* ---------------- SUB-TAB SWITCHING (all three sub-tabbed sections) ---------------- */
+
+function wireSubtabs(subtabsId, panelPrefix) {
+  document.querySelectorAll(`#${subtabsId} .subtab-btn`).forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(`#${subtabsId} .subtab-btn`).forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(`[id^="${panelPrefix}-"]`).forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById(`${panelPrefix}-${btn.dataset.tab}`).classList.add("active");
+    });
+  });
+}
+
+wireSubtabs("playerSubtabs", "panel");
+wireSubtabs("teamSubtabs", "team-panel");
+wireSubtabs("domesticSubtabs", "domestic-panel");
+
+/* ---------------- PULL IN EACH TABLE FILE'S DATA ----------------
+   Fetches each table's standalone HTML file, pulls the JSON out of
+   the #rankingsData block inside it, and renders it via the given
+   render function. Edit rankings by editing those files — this
+   script picks up the changes automatically on next load.
+
+   NOTE: fetch() needs the site served over http/https (e.g. a local
+   dev server, GitHub Pages, Netlify, etc). Opening index.html directly
+   from disk (file://) will block these requests due to browser CORS
+   rules — you'll see the boards stay empty in that case.
+------------------------------------------------------------------- */
+
+async function loadTable(url, renderFn, warningPanelId) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`${url} → ${res.status}`);
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const dataEl = doc.getElementById("rankingsData");
+    if (!dataEl) throw new Error(`${url} has no #rankingsData block`);
+    const data = JSON.parse(dataEl.textContent);
+    renderFn(data);
+  } catch (err) {
+    console.error(`Could not load rankings from ${url}:`, err);
+    const panel = document.getElementById(warningPanelId);
+    if (panel) {
+      const warning = document.createElement("div");
+      warning.style.cssText = "padding:16px 20px;background:#fff3cd;color:#7a5c00;font-size:12.5px;";
+      warning.textContent = `Couldn't load ${url}. If you're opening this file directly (file://), run a local server instead — e.g. "python3 -m http.server" in this folder, then open http://localhost:8000/index.html.`;
+      panel.prepend(warning);
+    }
+  }
+}
+
+// Player rankings (board theme)
+loadTable("test.html",  data => renderFormatData("test", data),  "panel-test");
+loadTable("odi.html",   data => renderFormatData("odi", data),   "panel-odi");
+loadTable("wodi.html",  data => renderFormatData("wodi", data),  "panel-wodi");
+
+// Team rankings (card theme)
+loadTable("mens-test.html",   data => renderTeamBoard("teamboard-mens-test", data),   "team-panel-mens-test");
+loadTable("mens-odi.html",    data => renderTeamBoard("teamboard-mens-odi", data),    "team-panel-mens-odi");
+loadTable("mens-t20i.html",   data => renderTeamBoard("teamboard-mens-t20i", data),   "team-panel-mens-t20i");
+loadTable("womens-odi.html",  data => renderTeamBoard("teamboard-womens-odi", data),  "team-panel-womens-odi");
+loadTable("womens-t20i.html", data => renderTeamBoard("teamboard-womens-t20i", data), "team-panel-womens-t20i");
+
+// Domestic rankings (ledger theme)
+loadTable("ranji.html",        data => renderDomesticBoard("domesticboard-ranji", data),        "domestic-panel-ranji");
+loadTable("vijay-hazare.html", data => renderDomesticBoard("domesticboard-vijay-hazare", data),  "domestic-panel-vijay-hazare");
+loadTable("smat.html",         data => renderDomesticBoard("domesticboard-smat", data),          "domestic-panel-smat");
+</script>
+</body>
+</html>
