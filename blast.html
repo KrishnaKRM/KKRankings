@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK's Vitality Blast Rankings</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="domestic-theme.css">
+</head>
+<body class="domestic-page-body">
+<div style="width:100%;max-width:1240px;">
+  <div class="domestic-standalone-note">Standalone preview — edit the data below in this file. <a href="index.html">← Back to full site</a></div>
+  <div id="domesticboard"></div>
+</div>
+
+<!-- ============================================================
+     EDIT THE RANKINGS DATA BELOW.
+     Each row: rank, team, rating, delta (rating point change, e.g. "+13","-1","-"),
+     arrow (position movement text, e.g. "↑6","↓3", or "" for no change),
+     rowClass: "champion" | "runner-up" | "gainer" | "loser" | null
+     ============================================================ -->
+<script type="application/json" id="rankingsData" data-prefix="blast">
+{
+  "title": "KK's Vitality Blast Rankings",
+  "subtitle": "Updated after 2026 Vitality Blast Season",
+  "championBorder": false,
+  "legend": [
+    { "type":"plain", "color":"var(--gold)", "label":"Champion (Northamptonshire Steelbacks)" },
+    { "type":"plain", "color":"var(--silver)", "label":"Runner-up (Hampshire Hawks)" },
+    { "type":"plain", "color":"var(--up)", "label":"Top 2 Gainers" },
+    { "type":"plain", "color":"var(--down)", "label":"Top 2 Losers" }
+  ],
+  "rows": [
+    { "rank":1,  "team":"Somerset",                    "rating":126, "delta":"-6",  "arrow":""   },
+    { "rank":2,  "team":"Northamptonshire Steelbacks",  "rating":122, "delta":"+17", "arrow":"↑3", "rowClass":"champion" },
+    { "rank":3,  "team":"Hampshire Hawks",              "rating":118, "delta":"+3",  "arrow":"",   "rowClass":"runner-up" },
+    { "rank":4,  "team":"Surrey",                       "rating":111, "delta":"-7",  "arrow":"↓2" },
+    { "rank":5,  "team":"Gloucestershire",              "rating":109, "delta":"+6",  "arrow":"↑3" },
+    { "rank":6,  "team":"Warwickshire Bears",           "rating":107, "delta":"-",   "arrow":"↓2" },
+    { "rank":7,  "team":"Notts Outlaws",                "rating":103, "delta":"+13", "arrow":"↑7", "rowClass":"gainer" },
+    { "rank":8,  "team":"Glamorgan",                    "rating":102, "delta":"+3",  "arrow":"↑1" },
+    { "rank":9,  "team":"Worcestershire Rapids",        "rating":102, "delta":"+12", "arrow":"↑6", "rowClass":"gainer" },
+    { "rank":10, "team":"Lancashire Lightning",         "rating":98,  "delta":"-7",  "arrow":"↓4", "rowClass":"loser" },
+    { "rank":11, "team":"Essex",                        "rating":97,  "delta":"-",   "arrow":"↓1" },
+    { "rank":12, "team":"Durham",                       "rating":92,  "delta":"-4",  "arrow":"↓1" },
+    { "rank":13, "team":"Sussex Sharks",                "rating":90,  "delta":"-14", "arrow":"↓6", "rowClass":"loser" },
+    { "rank":14, "team":"Kent Spitfires",                "rating":90,  "delta":"-1",  "arrow":"↓2" },
+    { "rank":15, "team":"Yorkshire",                     "rating":87,  "delta":"-4",  "arrow":"↓2" },
+    { "rank":16, "team":"Leicestershire Foxes",          "rating":84,  "delta":"-5",  "arrow":""   },
+    { "rank":17, "team":"Derbyshire Falcons",            "rating":81,  "delta":"-7",  "arrow":""   },
+    { "rank":18, "team":"Middlesex",                     "rating":79,  "delta":"+1",  "arrow":""   }
+  ]
+}
+</script>
+
+<script src="domestic-rankings.js"></script>
+</body>
+</html>

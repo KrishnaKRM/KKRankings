@@ -230,42 +230,19 @@ header.board-header{
   color:var(--ink);
 }
 
-.halves{
+/* Single-category grid (Batting or Bowling shown alone) — auto-fit
+   naturally collapses to 1 column on narrow screens and expands to 2
+   as width allows, with a 1px divider line that works whether the
+   columns sit side-by-side or stacked. */
+.single-halves{
   display:grid;
-  grid-template-columns:1fr 1fr 40px 1fr 1fr;
-  grid-template-rows:auto auto;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:1px;
+  background:rgba(20,32,27,0.1);
 }
-.seam{ grid-row:1 / 3; grid-column:3; position:relative; background:var(--ball); }
-.seam::before{
-  content:"";
-  position:absolute; top:0; bottom:0; left:50%;
-  border-left:2.5px dashed var(--cream);
-  opacity:0.85;
-}
-.half-title{
-  grid-row:1;
-  font-family:'Fraunces',serif;
-  font-size:15px;
-  font-weight:600;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  color:var(--ink);
-  padding:16px 26px 10px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.half-title::after{ content:""; flex:1; height:1px; background:var(--ink); opacity:0.15; }
-.title-batters{ grid-column:1 / 3; }
-.title-bowlers{ grid-column:4 / 6; }
+.single-col{ background:var(--cream); padding:0 0 14px; min-width:0; }
 
-.col{ grid-row:2; padding:0 0 14px; }
-.col-a{ grid-column:1; }
-.col-b{ grid-column:2; border-left:1px solid rgba(20,32,27,0.1); }
-.col-c{ grid-column:4; }
-.col-d{ grid-column:5; border-left:1px solid rgba(20,32,27,0.1); }
-
-.board table{ width:100%; border-collapse:collapse; }
+.board table{ width:100%; border-collapse:collapse; table-layout:fixed; }
 .board tbody tr{ border-bottom:1px solid rgba(20,32,27,0.08); }
 .board tbody tr:nth-child(even){ background:rgba(20,32,27,0.025); }
 .board tbody tr.row-up{ background:rgba(29,95,168,0.09); }
@@ -276,10 +253,11 @@ header.board-header{
   font-size:13.5px;
   color:var(--ink);
   vertical-align:middle;
-  white-space:nowrap;
 }
-.board td:first-child{ padding-left:26px; }
-.board td:last-child{ padding-right:20px; }
+.board td:first-child{ padding-left:26px; width:36px; white-space:nowrap; }
+.board td:nth-child(2){ width:33px; white-space:nowrap; }
+.board td:nth-child(3){ width:26px; white-space:nowrap; }
+.board td:last-child{ padding-right:16px; overflow:hidden; text-overflow:ellipsis; }
 
 .badge{
   width:25px; height:25px;
@@ -306,7 +284,7 @@ tr.r3 .badge{ background:linear-gradient(145deg,#d69a63,var(--bronze)); color:#4
   vertical-align:middle;
 }
 
-.name{ font-weight:600; font-size:13.5px; }
+.name{ font-weight:600; font-size:13.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:inline-block; max-width:100%; vertical-align:middle; }
 tr.r1 .name, tr.r2 .name, tr.r3 .name{ font-weight:700; }
 .name.retired, .name.inactive{ font-style:italic; font-weight:500; color:var(--ink-soft); }
 .tag{
@@ -319,9 +297,9 @@ tr.r1 .name, tr.r2 .name, tr.r3 .name{ font-weight:700; }
 .move.down { color:#c07a1e; }
 .move.flat { color:#b7ae9a; }
 
-.notes{ display:grid; grid-template-columns:1fr 1fr; border-top:1px solid rgba(20,32,27,0.12); }
+.notes{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); border-top:1px solid rgba(20,32,27,0.12); }
 .notes.notes-single{ grid-template-columns:1fr; }
-.notes-half{ padding:12px 44px 16px; display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 0; }
+.notes-half{ padding:12px 44px 16px; display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 0; min-width:0; }
 .notes-half + .notes-half{ border-left:1px solid rgba(20,32,27,0.12); }
 .notes-label{
   font-size:9.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
@@ -364,12 +342,14 @@ body.player-page-body{
 }
 .player-standalone-note a{ color:var(--cream); text-decoration:underline; }
 
-@media (max-width:900px){
-  .halves{ grid-template-columns:1fr 1fr; }
-  .seam{ display:none; }
-  .title-bowlers{ grid-column:1/3; grid-row:3; margin-top:6px; }
-  .col-c{ grid-column:1; grid-row:4; }
-  .col-d{ grid-column:2; grid-row:4; border-left:1px solid rgba(20,32,27,0.1); }
-  .notes{ grid-template-columns:1fr; }
-  .notes-half + .notes-half{ border-left:none; border-top:1px solid rgba(20,32,27,0.12); }
+/* ---------- global overflow safety + small-screen spacing ---------- */
+html{ overflow-x:hidden; }
+@media (max-width:640px){
+  body{ padding:24px 12px 40px; }
+  header.board-header{ padding:22px 20px 16px; }
+  .board-header h1{ font-size:28px; }
+  .notes-half{ padding:12px 20px 16px; }
+  .board td:first-child{ padding-left:14px; }
+  .board td:last-child{ padding-right:10px; }
+  footer.board-footer{ padding:14px 20px; }
 }

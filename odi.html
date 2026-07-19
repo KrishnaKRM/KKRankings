@@ -8,25 +8,20 @@
 <link rel="stylesheet" href="theme.css">
 </head>
 <body class="player-page-body">
-<div style="width:100%;max-width:1520px;">
+<div style="width:100%;max-width:1520px;display:flex;flex-direction:column;gap:24px;">
   <div class="player-standalone-note">Standalone preview — edit the data below in this file. <a href="index.html">← Back to full site</a></div>
 
   <div class="board">
     <header class="board-header">
       <div>
         <div class="eyebrow">#KKRankings · @KrishnaKRM</div>
-        <h1>KK's Top 20 <span id="odi-title">ODI Batters & Bowlers</span></h1>
+        <h1>KK's Top 20 <span id="odi-batting-title">ODI Batters</span></h1>
       </div>
-      <div class="meta"><strong id="odi-asof">July 2026</strong></div>
+      <div class="meta"><strong id="odi-batting-asof">July 2026</strong></div>
     </header>
-    <div class="halves">
-      <div class="half-title title-batters">Batters</div>
-      <div class="seam"></div>
-      <div class="half-title title-bowlers">Bowlers</div>
-      <div class="col col-a"><table><tbody id="odi-battersA"></tbody></table></div>
-      <div class="col col-b"><table><tbody id="odi-battersB"></tbody></table></div>
-      <div class="col col-c"><table><tbody id="odi-bowlersA"></tbody></table></div>
-      <div class="col col-d"><table><tbody id="odi-bowlersB"></tbody></table></div>
+    <div class="single-halves">
+      <div class="single-col"><table><tbody id="odi-battersA"></tbody></table></div>
+      <div class="single-col"><table><tbody id="odi-battersB"></tbody></table></div>
     </div>
     <div class="notes notes-single">
       <div class="notes-half">
@@ -34,7 +29,28 @@
         <span id="odi-notesBatting"></span>
       </div>
     </div>
-    <footer class="board-footer"><span>Rankings as on <b id="odi-footerdate">1 July 2026</b></span></footer>
+    <footer class="board-footer"><span>Rankings as on <b id="odi-batting-footerdate">1 July 2026</b></span></footer>
+  </div>
+
+  <div class="board">
+    <header class="board-header">
+      <div>
+        <div class="eyebrow">#KKRankings · @KrishnaKRM</div>
+        <h1>KK's Top 20 <span id="odi-bowling-title">ODI Bowlers</span></h1>
+      </div>
+      <div class="meta"><strong id="odi-bowling-asof">July 2026</strong></div>
+    </header>
+    <div class="single-halves">
+      <div class="single-col"><table><tbody id="odi-bowlersA"></tbody></table></div>
+      <div class="single-col"><table><tbody id="odi-bowlersB"></tbody></table></div>
+    </div>
+    <div class="notes notes-single">
+      <div class="notes-half">
+        <span class="notes-label">Retired / Inactive</span>
+        <span id="odi-notesBowling"></span>
+      </div>
+    </div>
+    <footer class="board-footer"><span>Rankings as on <b id="odi-bowling-footerdate">1 July 2026</b></span></footer>
   </div>
 </div>
 
@@ -47,6 +63,8 @@
 <script type="application/json" id="rankingsData" data-prefix="odi">
 {
   "title": "ODI Batters & Bowlers",
+  "battingTitle": "ODI Batters",
+  "bowlingTitle": "ODI Bowlers",
   "asOf": "July 2026",
   "footerDate": "1 July 2026",
   "batters": [

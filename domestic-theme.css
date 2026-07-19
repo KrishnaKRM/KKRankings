@@ -96,19 +96,15 @@
 
 .domestic-tables-wrapper {
   display: grid;
-  grid-template-columns: 1fr 3px 1fr;
-  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1px;
+  background: rgba(20,32,27,0.12);
 }
-.domestic-divider {
-  background: var(--ball);
-  align-self: stretch;
-  margin: 0 12px;
-  border-radius: 2px;
-}
+.domestic-half { background: var(--cream); min-width: 0; }
 
-.domestic-tables-wrapper table { width: 100%; border-collapse: collapse; }
-.domestic-tables-wrapper thead tr { background: var(--cream-dim); border-bottom: 1.5px solid rgba(20,32,27,0.15); }
-.domestic-tables-wrapper thead th {
+.domestic-half table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.domestic-half thead tr { background: var(--cream-dim); border-bottom: 1.5px solid rgba(20,32,27,0.15); }
+.domestic-half thead th {
   padding: 10px 5px;
   font-family: 'Fraunces', serif;
   font-weight: 700;
@@ -117,18 +113,21 @@
   text-align: center;
   letter-spacing: 0.2px;
 }
-.domestic-tables-wrapper thead th.team-col { text-align: left; padding-left: 10px; }
+.domestic-half thead th.team-col { text-align: left; padding-left: 10px; }
 
-.domestic-tables-wrapper tbody tr { height: 34px; border-bottom: 1px solid rgba(20,32,27,0.08); }
-.domestic-tables-wrapper tbody td {
+.domestic-half tbody tr { height: 34px; border-bottom: 1px solid rgba(20,32,27,0.08); }
+.domestic-half tbody td {
   padding: 0 5px;
   text-align: center;
   color: var(--ink);
   font-size: 13.5px;
 }
-.domestic-tables-wrapper tbody td.team-col { text-align: left; padding-left: 10px; font-weight: 600; font-size: 13.5px; }
-.domestic-tables-wrapper tbody tr:nth-child(odd)  { background-color: var(--cream); }
-.domestic-tables-wrapper tbody tr:nth-child(even) { background-color: rgba(20,32,27,0.025); }
+.domestic-half tbody td.team-col {
+  text-align: left; padding-left: 10px; font-weight: 600; font-size: 13.5px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 0;
+}
+.domestic-half tbody tr:nth-child(odd)  { background-color: var(--cream); }
+.domestic-half tbody tr:nth-child(even) { background-color: rgba(20,32,27,0.025); }
 
 .domestic-arrow-col  { width: 26px; font-size: 11px; font-weight: 800; color: var(--ink-soft); }
 .domestic-rank-col   { width: 34px; font-weight: 700; }
@@ -182,3 +181,12 @@ tr.domestic-loser     td { background-color: rgba(192,122,30,0.12) !important; c
   font-size: 12px; color: rgba(246,239,224,0.55); text-align: center;
 }
 .domestic-standalone-note a{ color: var(--cream); text-decoration: underline; }
+
+html{ overflow-x: hidden; }
+@media (max-width: 640px){
+  .domestic-page-body{ padding: 20px 10px; }
+  .domestic-header-area{ padding: 20px 20px 16px; }
+  .domestic-header-area h1{ font-size: 24px; }
+  .domestic-body-area{ padding: 14px 16px 4px; }
+  .domestic-footer{ padding: 12px 20px; }
+}

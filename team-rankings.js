@@ -64,8 +64,7 @@ function renderTeamBoard(containerId, data) {
   const chunks = teamSplitRows(data.rows, data.cols || 1);
 
   const halvesHTML = chunks.map((chunk, i) => {
-    const divider = i > 0 ? `<div class="team-col-divider"></div>` : "";
-    return `${divider}<div class="team-half"><table>
+    return `<div class="team-half"><table>
       <thead><tr><th>↕</th><th>Rank</th><th></th><th>Team</th><th>Rating</th><th>Δ</th></tr></thead>
       <tbody id="${containerId}-col${i}"></tbody>
     </table></div>`;
@@ -74,7 +73,7 @@ function renderTeamBoard(containerId, data) {
   const dateOnly = (data.subtitle || "").replace(/^Updated as on /, "");
 
   container.innerHTML = `
-    <div class="team-card cols-${data.cols || 1}">
+    <div class="team-card">
       <div class="team-top-stripe"></div>
       <div class="team-header">
         <div>

@@ -62,8 +62,9 @@ function playerFill(id, rows) {
 }
 
 /* prefix = "test" | "odi" | "wodi" (matches the IDs already present
-   in the markup). data = { title, asOf, footerDate, batters, bowlers,
-   footnotesBatting, footnotesBowling } */
+   in the markup, split across two panels: <prefix>-batting-* and
+   <prefix>-bowling-*). data = { title, battingTitle, bowlingTitle,
+   asOf, footerDate, batters, bowlers, footnotesBatting, footnotesBowling } */
 function renderFormatData(prefix, data) {
   const [battersA, battersB] = playerSplitRows(data.batters || []);
   const [bowlersA, bowlersB] = playerSplitRows(data.bowlers || []);
@@ -73,20 +74,28 @@ function renderFormatData(prefix, data) {
   playerFill(`${prefix}-bowlersA`, bowlersA);
   playerFill(`${prefix}-bowlersB`, bowlersB);
 
-  const titleEl = document.getElementById(`${prefix}-title`);
-  if (titleEl && data.title) titleEl.textContent = data.title;
+  const setText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el && text) el.textContent = text;
+  };
 
-  const asOfEl = document.getElementById(`${prefix}-asof`);
-  if (asOfEl && data.asOf) asOfEl.textContent = data.asOf;
+  // Fall back to splitting the combined title if battingTitle/bowlingTitle
+  // aren't provided, so older data files without those fields still work.
+  const battingTitle = data.battingTitle || (data.title ? data.title.replace(/\s*&\s*Bowlers?$/i, "").trim() : null);
+  const bowlingTitle = data.bowlingTitle || (data.title ? data.title.replace(/^.*Batters?\s*&\s*/i, "").trim() : null);
+
+  setText(`${prefix}-batting-title`, battingTitle);
+  setText(`${prefix}-bowling-title`, bowlingTitle);
+  setText(`${prefix}-batting-asof`, data.asOf);
+  setText(`${prefix}-bowling-asof`, data.asOf);
+  setText(`${prefix}-batting-footerdate`, data.footerDate);
+  setText(`${prefix}-bowling-footerdate`, data.footerDate);
 
   const battingNotes = document.getElementById(`${prefix}-notesBatting`);
   if (battingNotes) battingNotes.innerHTML = (data.footnotesBatting || []).map(playerNoteItemHTML).join("");
 
   const bowlingNotes = document.getElementById(`${prefix}-notesBowling`);
   if (bowlingNotes) bowlingNotes.innerHTML = (data.footnotesBowling || []).map(playerNoteItemHTML).join("");
-
-  const footerDateEl = document.getElementById(`${prefix}-footerdate`);
-  if (footerDateEl && data.footerDate) footerDateEl.textContent = data.footerDate;
 }
 
 /* Standalone auto-render: if this page has its own #rankingsData
