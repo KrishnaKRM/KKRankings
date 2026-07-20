@@ -69,11 +69,11 @@ function renderDomesticBoard(containerId, data) {
         <div class="domestic-legend">${(data.legend || []).map(domesticLegendItemHTML).join("")}</div>
         <div class="domestic-tables-wrapper">
           <div class="domestic-half"><table>
-            <thead><tr><th colspan="2">Rank</th><th class="team-col">Team</th><th class="domestic-rating-col">Rating</th><th class="domestic-delta-col">Δ</th></tr></thead>
+            <thead><tr><th class="domestic-arrow-col"></th><th class="domestic-rank-col">Rank</th><th class="team-col">Team</th><th class="domestic-rating-col">Rating</th><th class="domestic-delta-col">Δ</th></tr></thead>
             <tbody id="${containerId}-left"></tbody>
           </table></div>
           <div class="domestic-half"><table>
-            <thead><tr><th colspan="2">Rank</th><th class="team-col">Team</th><th class="domestic-rating-col">Rating</th><th class="domestic-delta-col">Δ</th></tr></thead>
+            <thead><tr><th class="domestic-arrow-col"></th><th class="domestic-rank-col">Rank</th><th class="team-col">Team</th><th class="domestic-rating-col">Rating</th><th class="domestic-delta-col">Δ</th></tr></thead>
             <tbody id="${containerId}-right"></tbody>
           </table></div>
         </div>
