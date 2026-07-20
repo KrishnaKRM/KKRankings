@@ -73,7 +73,7 @@ function renderTeamBoard(containerId, data) {
   const dateOnly = (data.subtitle || "").replace(/^Updated as on /, "");
 
   container.innerHTML = `
-    <div class="team-card">
+    <div class="team-card cols-${data.cols || 1}">
       <div class="team-top-stripe"></div>
       <div class="team-header">
         <div>
