@@ -40,9 +40,9 @@ function playerBuildRow(row) {
   const flag = row.svg || playerFlagURL(row.code);
 
   tr.innerHTML = `
-    <td style="width:36px;">${playerMoveHTML(row.chg)}</td>
-    <td style="width:33px;"><span class="badge">${row.rank}</span></td>
-    <td style="width:26px;"><img class="flag" src="${flag}" alt=""></td>
+    <td style="width:54px;">${playerMoveHTML(row.chg)}</td>
+    <td style="width:39px;"><span class="badge">${row.rank}</span></td>
+    <td style="width:34px;"><img class="flag" src="${flag}" alt=""></td>
     <td><span class="${nameClass}">${row.name}</span>${tagHTML}</td>
   `;
   return tr;

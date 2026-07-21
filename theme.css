@@ -256,9 +256,9 @@ header.board-header{
   color:var(--ink);
   vertical-align:middle;
 }
-.board td:first-child{ padding-left:26px; width:36px; white-space:nowrap; }
-.board td:nth-child(2){ width:33px; white-space:nowrap; }
-.board td:nth-child(3){ width:26px; white-space:nowrap; }
+.board td:first-child{ padding-left:20px; width:54px; white-space:nowrap; }
+.board td:nth-child(2){ width:39px; white-space:nowrap; }
+.board td:nth-child(3){ width:34px; white-space:nowrap; }
 .board td:last-child{ padding-right:16px; }
 
 .badge{

@@ -125,7 +125,7 @@
   color: var(--ink-soft);
   text-align: left;
 }
-.team-half thead th:first-child  { padding-left: 20px; width: 30px; text-align: center; }
+.team-half thead th:first-child  { padding-left: 14px; padding-right: 6px; width: 52px; text-align: center; }
 .team-half thead th:nth-child(2) { width: 44px; padding-left: 4px; }
 .team-half thead th:nth-child(3) { width: 30px; text-align: center; padding: 9px 3px; }
 .team-half thead th:nth-child(5) { text-align: right; width: 50px; padding-right: 6px; }
@@ -144,7 +144,7 @@
   color: var(--ink);
   vertical-align: middle;
 }
-.team-half td:first-child { padding-left: 20px; text-align: center; }
+.team-half td:first-child { padding-left: 14px; padding-right: 6px; text-align: center; }
 .team-half td:last-child  { padding-right: 20px; text-align: right; }
 
 .team-rank-badge {
