@@ -236,9 +236,11 @@ header.board-header{
    columns sit side-by-side or stacked. */
 .single-halves{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns:repeat(auto-fit, minmax(310px, 1fr));
   gap:1px;
   background:rgba(20,32,27,0.1);
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
 }
 .single-col{ background:var(--cream); padding:0 0 14px; min-width:0; }
 
@@ -257,7 +259,7 @@ header.board-header{
 .board td:first-child{ padding-left:26px; width:36px; white-space:nowrap; }
 .board td:nth-child(2){ width:33px; white-space:nowrap; }
 .board td:nth-child(3){ width:26px; white-space:nowrap; }
-.board td:last-child{ padding-right:16px; overflow:hidden; text-overflow:ellipsis; }
+.board td:last-child{ padding-right:16px; }
 
 .badge{
   width:25px; height:25px;
@@ -284,7 +286,7 @@ tr.r3 .badge{ background:linear-gradient(145deg,#d69a63,var(--bronze)); color:#4
   vertical-align:middle;
 }
 
-.name{ font-weight:600; font-size:13.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:inline-block; max-width:100%; vertical-align:middle; }
+.name{ font-weight:600; font-size:13.5px; white-space:nowrap; vertical-align:middle; }
 tr.r1 .name, tr.r2 .name, tr.r3 .name{ font-weight:700; }
 .name.retired, .name.inactive{ font-style:italic; font-weight:500; color:var(--ink-soft); }
 .tag{

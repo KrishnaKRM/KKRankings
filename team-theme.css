@@ -105,9 +105,11 @@
 
 .team-tables-wrap {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 1px;
   background: rgba(20,32,27,0.12);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .team-half { background: var(--cream); min-width: 0; }
 
@@ -185,7 +187,7 @@ tr.rank-bronze .team-name { font-weight: 700; }
 .team-rank-change.down    { color: var(--down); }
 .team-rank-change.neutral { color: #b7ae9a; }
 
-.team-name { font-weight: 600; color: var(--ink); font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; max-width: 100%; vertical-align: middle; }
+.team-name { font-weight: 600; color: var(--ink); font-size: 13.5px; white-space: nowrap; vertical-align: middle; }
 
 .team-rating-num { font-family: 'Fraunces', serif; font-size: 14.5px; font-weight: 700; color: var(--ink); display: block; text-align: right; }
 

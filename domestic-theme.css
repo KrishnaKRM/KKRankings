@@ -96,9 +96,11 @@
 
 .domestic-tables-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   gap: 1px;
   background: rgba(20,32,27,0.12);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .domestic-half { background: var(--cream); min-width: 0; }
 
@@ -124,7 +126,7 @@
 }
 .domestic-half tbody td.team-col {
   text-align: left; padding-left: 10px; font-weight: 600; font-size: 13.5px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 0;
+  white-space: nowrap;
 }
 .domestic-half tbody tr:nth-child(odd)  { background-color: var(--cream); }
 .domestic-half tbody tr:nth-child(even) { background-color: rgba(20,32,27,0.025); }
