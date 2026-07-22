@@ -180,6 +180,8 @@ body{
 
 .board{
   width:100%;
+  max-width:980px;
+  margin:0 auto;
   background:var(--cream);
   border-radius:6px;
   position:relative;

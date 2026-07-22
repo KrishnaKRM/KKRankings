@@ -36,7 +36,7 @@
 .domestic-container {
   background: var(--cream);
   border-radius: 6px;
-  width: 1240px;
+  width: 980px;
   max-width: 100%;
   box-shadow: 0 40px 90px rgba(0,0,0,0.45), 0 4px 0 rgba(0,0,0,0.15);
   position: relative;
