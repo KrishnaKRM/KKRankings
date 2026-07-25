@@ -227,12 +227,14 @@
       <button class="subtab-btn active" data-tab="ranji">Ranji Trophy</button>
       <button class="subtab-btn" data-tab="vijay-hazare">Vijay Hazare Trophy</button>
       <button class="subtab-btn" data-tab="smat">Syed Mushtaq Ali Trophy</button>
+      <button class="subtab-btn" data-tab="senior-womens-t20">Senior Women's T20</button>
     </div>
 
     <div class="domestic-page-body" style="min-height:0;padding:24px 18px 44px;">
       <div class="format-panel active" id="domestic-panel-ranji"><div id="domesticboard-ranji"></div></div>
       <div class="format-panel" id="domestic-panel-vijay-hazare"><div id="domesticboard-vijay-hazare"></div></div>
       <div class="format-panel" id="domestic-panel-smat"><div id="domesticboard-smat"></div></div>
+      <div class="format-panel" id="domestic-panel-senior-womens-t20"><div id="domesticboard-senior-womens-t20"></div></div>
     </div>
   </div>
 
@@ -254,7 +256,7 @@
     </div>
   </div>
 
-  <div class="site-footer">#KKRankings</div>
+  <div class="site-footer">KK's Rankings · Updated monthly · #KKRankings</div>
 
 <script src="rankings.js"></script>
 <script src="team-rankings.js"></script>
@@ -339,6 +341,7 @@ loadTable("womens-t20i.html", data => renderTeamBoard("teamboard-womens-t20i", d
 loadTable("ranji.html",        data => renderDomesticBoard("domesticboard-ranji", data),        "domestic-panel-ranji");
 loadTable("vijay-hazare.html", data => renderDomesticBoard("domesticboard-vijay-hazare", data),  "domestic-panel-vijay-hazare");
 loadTable("smat.html",         data => renderDomesticBoard("domesticboard-smat", data),          "domestic-panel-smat");
+loadTable("senior-womens-t20.html", data => renderDomesticBoard("domesticboard-senior-womens-t20", data), "domestic-panel-senior-womens-t20");
 
 // Others (ledger theme)
 loadTable("blast.html", data => renderDomesticBoard("domesticboard-blast", data), "others-panel-blast");

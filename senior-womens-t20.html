@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK's Indian Domestic Senior Women's T20 Rankings</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="domestic-theme.css">
+</head>
+<body class="domestic-page-body">
+<div style="width:100%;max-width:980px;">
+  <div class="domestic-standalone-note">Standalone preview — edit the data below in this file. <a href="index.html">← Back to full site</a></div>
+  <div id="domesticboard"></div>
+</div>
+
+<!-- ============================================================
+     EDIT THE RANKINGS DATA BELOW.
+     Each row: rank, team, rating, delta (rating point change, e.g. "+13","-1","—"),
+     arrow (position movement text, e.g. "↑6","↓3", or "" for no change),
+     rowClass: "champion" | "runner-up" | "gainer" | "loser" | null
+     ============================================================ -->
+<script type="application/json" id="rankingsData" data-prefix="senior-womens-t20">
+{
+  "title": "KK's Indian Domestic Senior Women's T20 Rankings",
+  "subtitle": "Updated after 2025–26 Season",
+  "championBorder": false,
+  "legend": [
+    { "type":"plain", "color":"var(--gold)", "label":"Champion (Maharashtra)" },
+    { "type":"plain", "color":"var(--silver)", "label":"Runner-up (Madhya Pradesh)" }
+  ],
+  "rows": [
+    { "rank":1,  "team":"Railways",              "rating":262, "delta":"—", "arrow":"" },
+    { "rank":2,  "team":"Madhya Pradesh",         "rating":217, "delta":"—", "arrow":"", "rowClass":"runner-up" },
+    { "rank":3,  "team":"Mumbai",                 "rating":217, "delta":"—", "arrow":"" },
+    { "rank":4,  "team":"Delhi",                  "rating":203, "delta":"—", "arrow":"" },
+    { "rank":5,  "team":"Bengal",                 "rating":201, "delta":"—", "arrow":"" },
+    { "rank":6,  "team":"Himachal Pradesh",       "rating":200, "delta":"—", "arrow":"" },
+    { "rank":7,  "team":"Maharashtra",            "rating":200, "delta":"—", "arrow":"", "rowClass":"champion" },
+    { "rank":8,  "team":"Kerala",                 "rating":200, "delta":"—", "arrow":"" },
+    { "rank":9,  "team":"Karnataka",              "rating":193, "delta":"—", "arrow":"" },
+    { "rank":10, "team":"Vidarbha",               "rating":192, "delta":"—", "arrow":"" },
+    { "rank":11, "team":"Haryana",                "rating":191, "delta":"—", "arrow":"" },
+    { "rank":12, "team":"Baroda",                 "rating":191, "delta":"—", "arrow":"" },
+    { "rank":13, "team":"Uttarakhand",            "rating":186, "delta":"—", "arrow":"" },
+    { "rank":14, "team":"Uttar Pradesh",          "rating":184, "delta":"—", "arrow":"" },
+    { "rank":15, "team":"Punjab",                 "rating":183, "delta":"—", "arrow":"" },
+    { "rank":16, "team":"Andhra",                 "rating":180, "delta":"—", "arrow":"" },
+    { "rank":17, "team":"Jharkhand",              "rating":178, "delta":"—", "arrow":"" },
+    { "rank":18, "team":"Tamil Nadu",             "rating":176, "delta":"—", "arrow":"" },
+    { "rank":19, "team":"Goa",                    "rating":170, "delta":"—", "arrow":"" },
+    { "rank":20, "team":"Chhattisgarh",           "rating":161, "delta":"—", "arrow":"" },
+    { "rank":21, "team":"Odisha",                 "rating":159, "delta":"—", "arrow":"" },
+    { "rank":22, "team":"Rajasthan",              "rating":158, "delta":"—", "arrow":"" },
+    { "rank":23, "team":"Assam",                  "rating":152, "delta":"—", "arrow":"" },
+    { "rank":24, "team":"Hyderabad",              "rating":147, "delta":"—", "arrow":"" },
+    { "rank":25, "team":"Chandigarh",             "rating":147, "delta":"—", "arrow":"" },
+    { "rank":26, "team":"Pondicherry",            "rating":144, "delta":"—", "arrow":"" },
+    { "rank":27, "team":"Gujarat",                "rating":141, "delta":"—", "arrow":"" },
+    { "rank":28, "team":"Tripura",                "rating":132, "delta":"—", "arrow":"" },
+    { "rank":29, "team":"Saurashtra",             "rating":132, "delta":"—", "arrow":"" },
+    { "rank":30, "team":"Jammu and Kashmir",      "rating":106, "delta":"—", "arrow":"" },
+    { "rank":31, "team":"Nagaland",               "rating":97,  "delta":"—", "arrow":"" },
+    { "rank":32, "team":"Bihar",                  "rating":94,  "delta":"—", "arrow":"" },
+    { "rank":33, "team":"Meghalaya",              "rating":69,  "delta":"—", "arrow":"" },
+    { "rank":34, "team":"Sikkim",                 "rating":66,  "delta":"—", "arrow":"" },
+    { "rank":35, "team":"Manipur",                "rating":47,  "delta":"—", "arrow":"" },
+    { "rank":36, "team":"Mizoram",                "rating":32,  "delta":"—", "arrow":"" },
+    { "rank":37, "team":"Arunachal Pradesh",      "rating":0,   "delta":"—", "arrow":"" }
+  ]
+}
+</script>
+
+<script src="domestic-rankings.js"></script>
+</body>
+</html>

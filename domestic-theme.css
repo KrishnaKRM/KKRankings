@@ -101,8 +101,15 @@
   background: rgba(20,32,27,0.12);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  container-type: inline-size;
 }
 .domestic-half { background: var(--cream); min-width: 0; }
+
+/* When the grid can only fit one column (< 2×370px + gap), every column's
+   header would otherwise repeat mid-list — keep only the first. */
+@container (max-width: 741px) {
+  .domestic-half:not(:first-child) thead { display: none; }
+}
 
 .domestic-half table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .domestic-half thead tr { background: var(--cream-dim); border-bottom: 1.5px solid rgba(20,32,27,0.15); }
