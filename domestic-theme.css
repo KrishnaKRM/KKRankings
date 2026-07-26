@@ -36,13 +36,16 @@
 .domestic-container {
   background: var(--cream);
   border-radius: 6px;
-  width: 1520px;
+  width: 100%;
   max-width: 100%;
   box-shadow: 0 40px 90px rgba(0,0,0,0.45), 0 4px 0 rgba(0,0,0,0.15);
   position: relative;
   overflow: hidden;
   margin: 0 auto;
 }
+.domestic-container.max-cols-1 { max-width: 560px; }
+.domestic-container.max-cols-2 { max-width: 980px; }
+.domestic-container.max-cols-3 { max-width: 1520px; }
 
 .domestic-top-bar {
   height: 10px;

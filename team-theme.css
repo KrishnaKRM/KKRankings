@@ -143,8 +143,11 @@
   color: var(--ink);
   vertical-align: middle;
 }
-.team-half td:first-child { padding-left: 14px; padding-right: 6px; text-align: center; }
-.team-half td:last-child  { padding-right: 20px; text-align: right; }
+.team-half td:first-child { width: 52px; padding-left: 14px; padding-right: 6px; text-align: center; }
+.team-half td:nth-child(2) { width: 44px; padding-left: 4px; }
+.team-half td:nth-child(3) { width: 30px; text-align: center; padding: 9px 3px; }
+.team-half td:nth-child(5) { text-align: right; width: 50px; padding-right: 6px; }
+.team-half td:last-child  { text-align: right; width: 40px; padding-right: 20px; }
 
 .team-rank-badge {
   width: 25px;

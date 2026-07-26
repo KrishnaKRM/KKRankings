@@ -81,7 +81,7 @@ function renderDomesticBoard(containerId, data) {
 
   container.innerHTML = `
     <div class="domestic-standalone-note-slot"></div>
-    <div class="domestic-container${data.championBorder ? " with-champion-border" : ""}">
+    <div class="domestic-container max-cols-${maxCols}${data.championBorder ? " with-champion-border" : ""}">
       <div class="domestic-top-bar"></div>
       <div class="domestic-header-area">
         <div class="eyebrow">#KKRankings · @KrishnaKRM</div>
