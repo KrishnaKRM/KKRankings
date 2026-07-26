@@ -36,7 +36,7 @@
 .domestic-container {
   background: var(--cream);
   border-radius: 6px;
-  width: 980px;
+  width: 1520px;
   max-width: 100%;
   box-shadow: 0 40px 90px rgba(0,0,0,0.45), 0 4px 0 rgba(0,0,0,0.15);
   position: relative;
@@ -96,20 +96,12 @@
 
 .domestic-tables-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   gap: 1px;
   background: rgba(20,32,27,0.12);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  container-type: inline-size;
 }
 .domestic-half { background: var(--cream); min-width: 0; }
-
-/* When the grid can only fit one column (< 2×370px + gap), every column's
-   header would otherwise repeat mid-list — keep only the first. */
-@container (max-width: 741px) {
-  .domestic-half:not(:first-child) thead { display: none; }
-}
 
 .domestic-half table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .domestic-half thead tr { background: var(--cream-dim); border-bottom: 1.5px solid rgba(20,32,27,0.15); }

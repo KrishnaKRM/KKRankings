@@ -1,7 +1,18 @@
 /* ============================================================
    domestic-rankings.js — shared rendering logic for Indian
-   Domestic Rankings (ledger theme). Splits rows into 2 columns.
+   Domestic Rankings (ledger theme).
+
+   Column count is recomputed from the container's actual rendered
+   width (via ResizeObserver) rather than fixed at load time, and
+   rows are re-chunked to match exactly — so there's never a lone
+   "orphaned" column wrapping below with a duplicate header. Each
+   column only gets its own header when it's genuinely displayed
+   side-by-side with another. Supports up to 3 columns when there's
+   room (set via data.maxCols, default 3).
    ============================================================ */
+
+const DOMESTIC_MIN_COL_WIDTH = 370; // keep in sync with domestic-theme.css
+const DOMESTIC_GRID_GAP = 1;
 
 function domesticDeltaClass(delta) {
   if (delta === "—" || delta === "-") return "";
@@ -38,9 +49,19 @@ function domesticBuildRow(row) {
   return tr;
 }
 
-function domesticSplitRows(rows) {
-  const chunkSize = Math.ceil(rows.length / 2);
-  return [rows.slice(0, chunkSize), rows.slice(chunkSize)];
+/* Splits rows into `cols` evenly-sized chunks (last chunk gets the remainder). */
+function domesticSplitRows(rows, cols) {
+  const chunkSize = Math.ceil(rows.length / cols);
+  const chunks = [];
+  for (let i = 0; i < cols; i++) {
+    chunks.push(rows.slice(i * chunkSize, (i + 1) * chunkSize));
+  }
+  return chunks.filter(c => c.length > 0);
+}
+
+function domesticPickColumnCount(containerWidth, maxCols) {
+  const fit = Math.floor((containerWidth + DOMESTIC_GRID_GAP) / (DOMESTIC_MIN_COL_WIDTH + DOMESTIC_GRID_GAP));
+  return Math.max(1, Math.min(maxCols, fit || 1));
 }
 
 function domesticLegendItemHTML(item) {
@@ -50,12 +71,13 @@ function domesticLegendItemHTML(item) {
   return `<div class="domestic-legend-item"><div class="domestic-legend-box" style="background:${item.color};"></div> ${item.label}</div>`;
 }
 
-/* containerId = id of an empty <div>. data = { title, subtitle, legend, rows, championBorder } */
+/* containerId = id of an empty <div>. data = { title, subtitle, legend, rows,
+   championBorder, maxCols } */
 function renderDomesticBoard(containerId, data) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  const [left, right] = domesticSplitRows(data.rows);
+  const maxCols = data.maxCols || 3;
 
   container.innerHTML = `
     <div class="domestic-standalone-note-slot"></div>
@@ -67,24 +89,43 @@ function renderDomesticBoard(containerId, data) {
       </div>
       <div class="domestic-body-area">
         <div class="domestic-legend">${(data.legend || []).map(domesticLegendItemHTML).join("")}</div>
-        <div class="domestic-tables-wrapper">
-          <div class="domestic-half"><table>
-            <thead><tr><th class="domestic-arrow-col"></th><th class="domestic-rank-col">Rank</th><th class="team-col">Team</th><th class="domestic-rating-col">Rating</th><th class="domestic-delta-col">Δ</th></tr></thead>
-            <tbody id="${containerId}-left"></tbody>
-          </table></div>
-          <div class="domestic-half"><table>
-            <thead><tr><th class="domestic-arrow-col"></th><th class="domestic-rank-col">Rank</th><th class="team-col">Team</th><th class="domestic-rating-col">Rating</th><th class="domestic-delta-col">Δ</th></tr></thead>
-            <tbody id="${containerId}-right"></tbody>
-          </table></div>
-        </div>
+        <div class="domestic-tables-wrapper"></div>
       </div>
       <div class="domestic-footer"><span>${data.subtitle}</span></div>
     </div>`;
 
-  const leftBody = document.getElementById(`${containerId}-left`);
-  const rightBody = document.getElementById(`${containerId}-right`);
-  left.forEach(r => leftBody.appendChild(domesticBuildRow(r)));
-  right.forEach(r => rightBody.appendChild(domesticBuildRow(r)));
+  const wrap = container.querySelector(".domestic-tables-wrapper");
+  let currentCols = 0;
+
+  function rerender(cols) {
+    if (cols === currentCols) return;
+    currentCols = cols;
+
+    wrap.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    wrap.innerHTML = "";
+
+    const chunks = domesticSplitRows(data.rows, cols);
+    chunks.forEach(chunk => {
+      const half = document.createElement("div");
+      half.className = "domestic-half";
+      // Only show a header when more than one column is on screen —
+      // a single stacked column never needs a repeated label.
+      half.innerHTML = cols > 1
+        ? `<table><thead><tr><th class="domestic-arrow-col"></th><th class="domestic-rank-col">Rank</th><th class="team-col">Team</th><th class="domestic-rating-col">Rating</th><th class="domestic-delta-col">Δ</th></tr></thead><tbody></tbody></table>`
+        : `<table><tbody></tbody></table>`;
+      const body = half.querySelector("tbody");
+      chunk.forEach(row => body.appendChild(domesticBuildRow(row)));
+      wrap.appendChild(half);
+    });
+  }
+
+  rerender(domesticPickColumnCount(wrap.getBoundingClientRect().width || container.getBoundingClientRect().width, maxCols));
+
+  const ro = new ResizeObserver(entries => {
+    const width = entries[0].contentRect.width;
+    rerender(domesticPickColumnCount(width, maxCols));
+  });
+  ro.observe(wrap);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

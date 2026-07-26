@@ -1,8 +1,17 @@
 /* ============================================================
    team-rankings.js — shared rendering logic for Team Rankings
-   (card theme). Builds the whole card, including the variable
-   1/2/3-column table layout, from a JSON data object.
+   (card theme). Builds the whole card from a JSON data object.
+
+   Column count is recomputed from the container's actual rendered
+   width (via ResizeObserver) rather than fixed at load time, and
+   rows are re-chunked to match exactly — so there's never a lone
+   "orphaned" column wrapping below with a duplicate header. Each
+   column only gets its own header when it's genuinely displayed
+   side-by-side with another.
    ============================================================ */
+
+const TEAM_MIN_COL_WIDTH = 380; // keep in sync with team-theme.css
+const TEAM_GRID_GAP = 1;
 
 function teamFlagURL(code) {
   return `https://flagcdn.com/w40/${code}.png`;
@@ -44,36 +53,32 @@ function teamBuildRow(row) {
   return tr;
 }
 
-/* Splits data.rows into data.cols evenly-sized chunks (last chunk gets the
-   remainder), matching the original per-file slicing behaviour. */
+/* Splits rows into `cols` evenly-sized chunks (last chunk gets the remainder). */
 function teamSplitRows(rows, cols) {
   const chunkSize = Math.ceil(rows.length / cols);
   const chunks = [];
   for (let i = 0; i < cols; i++) {
     chunks.push(rows.slice(i * chunkSize, (i + 1) * chunkSize));
   }
-  return chunks;
+  return chunks.filter(c => c.length > 0);
+}
+
+function teamPickColumnCount(containerWidth, maxCols) {
+  const fit = Math.floor((containerWidth + TEAM_GRID_GAP) / (TEAM_MIN_COL_WIDTH + TEAM_GRID_GAP));
+  return Math.max(1, Math.min(maxCols, fit || 1));
 }
 
 /* containerId = id of an empty <div> to render the full card into.
-   data = { title, subtitleHTML, footerNote, cols, rows: [...] } */
+   data = { title, subtitle, footerNote, cols, rows: [...] } */
 function renderTeamBoard(containerId, data) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  const chunks = teamSplitRows(data.rows, data.cols || 1);
-
-  const halvesHTML = chunks.map((chunk, i) => {
-    return `<div class="team-half"><table>
-      <thead><tr><th>↕</th><th>Rank</th><th></th><th>Team</th><th>Rating</th><th>Δ</th></tr></thead>
-      <tbody id="${containerId}-col${i}"></tbody>
-    </table></div>`;
-  }).join("");
-
+  const maxCols = data.cols || 1;
   const dateOnly = (data.subtitle || "").replace(/^Updated as on /, "");
 
   container.innerHTML = `
-    <div class="team-card cols-${data.cols || 1}">
+    <div class="team-card">
       <div class="team-top-stripe"></div>
       <div class="team-header">
         <div>
@@ -82,14 +87,43 @@ function renderTeamBoard(containerId, data) {
         </div>
         <div class="meta"><strong>${dateOnly}</strong></div>
       </div>
-      <div class="team-tables-wrap">${halvesHTML}</div>
+      <div class="team-tables-wrap"></div>
       <div class="team-footer"><div class="team-footer-note">Rankings as on <b>${dateOnly}</b> · ${data.footerNote}</div></div>
     </div>`;
 
-  chunks.forEach((chunk, i) => {
-    const body = document.getElementById(`${containerId}-col${i}`);
-    chunk.forEach(row => body.appendChild(teamBuildRow(row)));
+  const wrap = container.querySelector(".team-tables-wrap");
+  let currentCols = 0;
+
+  function rerender(cols) {
+    if (cols === currentCols) return;
+    currentCols = cols;
+
+    wrap.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    wrap.innerHTML = "";
+
+    const chunks = teamSplitRows(data.rows, cols);
+    chunks.forEach((chunk, i) => {
+      const half = document.createElement("div");
+      half.className = "team-half";
+      // Only show a header when more than one column is on screen —
+      // a single stacked column never needs a repeated label.
+      half.innerHTML = cols > 1
+        ? `<table><thead><tr><th>↕</th><th>Rank</th><th></th><th>Team</th><th>Rating</th><th>Δ</th></tr></thead><tbody></tbody></table>`
+        : `<table><tbody></tbody></table>`;
+      const body = half.querySelector("tbody");
+      chunk.forEach(row => body.appendChild(teamBuildRow(row)));
+      wrap.appendChild(half);
+    });
+  }
+
+  // Initial render + keep in sync with the container's actual width.
+  rerender(teamPickColumnCount(wrap.getBoundingClientRect().width || container.getBoundingClientRect().width, maxCols));
+
+  const ro = new ResizeObserver(entries => {
+    const width = entries[0].contentRect.width;
+    rerender(teamPickColumnCount(width, maxCols));
   });
+  ro.observe(wrap);
 }
 
 /* Standalone auto-render: if this page has its own #rankingsData block,
