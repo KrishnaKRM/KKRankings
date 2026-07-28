@@ -105,12 +105,13 @@ function renderDomesticBoard(containerId, data) {
     wrap.innerHTML = "";
 
     const chunks = domesticSplitRows(data.rows, cols);
-    chunks.forEach(chunk => {
+    chunks.forEach((chunk, i) => {
       const half = document.createElement("div");
       half.className = "domestic-half";
-      // Only show a header when more than one column is on screen —
-      // a single stacked column never needs a repeated label.
-      half.innerHTML = cols > 1
+      // The first column always gets a header (there's no repeat risk
+      // with just one). Later columns only get one when genuinely
+      // shown side-by-side — never when stacked below another.
+      half.innerHTML = (i === 0 || cols > 1)
         ? `<table><thead><tr><th class="domestic-arrow-col"></th><th class="domestic-rank-col">Rank</th><th class="team-col">Team</th><th class="domestic-rating-col">Rating</th><th class="domestic-delta-col">Δ</th></tr></thead><tbody></tbody></table>`
         : `<table><tbody></tbody></table>`;
       const body = half.querySelector("tbody");

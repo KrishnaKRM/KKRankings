@@ -105,9 +105,10 @@ function renderTeamBoard(containerId, data) {
     chunks.forEach((chunk, i) => {
       const half = document.createElement("div");
       half.className = "team-half";
-      // Only show a header when more than one column is on screen —
-      // a single stacked column never needs a repeated label.
-      half.innerHTML = cols > 1
+      // The first column always gets a header (there's no repeat risk
+      // with just one). Later columns only get one when genuinely
+      // shown side-by-side — never when stacked below another.
+      half.innerHTML = (i === 0 || cols > 1)
         ? `<table><thead><tr><th>↕</th><th>Rank</th><th></th><th>Team</th><th>Rating</th><th>Δ</th></tr></thead><tbody></tbody></table>`
         : `<table><tbody></tbody></table>`;
       const body = half.querySelector("tbody");
