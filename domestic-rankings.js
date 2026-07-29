@@ -22,6 +22,11 @@ function domesticDeltaClass(delta) {
 function domesticBuildRow(row) {
   const tr = document.createElement("tr");
   if (row.rowClass) tr.classList.add(`domestic-${row.rowClass}`);
+  // A champion/runner-up can *also* be a top gainer or loser — the gold/
+  // silver background already shows the placement, so add a colored edge
+  // accent (matching the gainer/loser blue/amber) to signal the second fact.
+  if (row.also === "gainer") tr.classList.add("domestic-also-gainer");
+  if (row.also === "loser") tr.classList.add("domestic-also-loser");
 
   let rankHTML;
   if (row.rank <= 3) {
@@ -81,7 +86,7 @@ function renderDomesticBoard(containerId, data) {
 
   container.innerHTML = `
     <div class="domestic-standalone-note-slot"></div>
-    <div class="domestic-container max-cols-${maxCols}${data.championBorder ? " with-champion-border" : ""}">
+    <div class="domestic-container max-cols-${maxCols}">
       <div class="domestic-top-bar"></div>
       <div class="domestic-header-area">
         <div class="eyebrow">#KKRankings · @KrishnaKRM</div>

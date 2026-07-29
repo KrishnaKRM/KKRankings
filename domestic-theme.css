@@ -158,10 +158,8 @@ tr.domestic-runner-up td { background-color: rgba(185,192,198,0.28) !important; 
 tr.domestic-gainer    td { background-color: rgba(29,95,168,0.10) !important; color: var(--up) !important; font-weight: 700; }
 tr.domestic-loser     td { background-color: rgba(192,122,30,0.12) !important; color: var(--down) !important; font-weight: 700; }
 
-.domestic-container.with-champion-border tr.domestic-champion  td:first-child,
-.domestic-container.with-champion-border tr.domestic-runner-up td:first-child {
-  border-left: 4px solid var(--ball);
-}
+tr.domestic-also-gainer td:first-child { border-left: 4px solid var(--up); }
+tr.domestic-also-loser  td:first-child { border-left: 4px solid var(--down); }
 
 .domestic-pos { color: var(--up); font-weight: 800; }
 .domestic-neg { color: var(--down); font-weight: 800; }
