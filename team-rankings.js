@@ -69,13 +69,15 @@ function teamPickColumnCount(containerWidth, maxCols) {
 }
 
 /* containerId = id of an empty <div> to render the full card into.
-   data = { title, subtitle, footerNote, cols, rows: [...] } */
+   data = { title, subtitle, footerNote, cols, rows: [...], visibleCount } */
 function renderTeamBoard(containerId, data) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
   const maxCols = data.cols || 1;
   const dateOnly = (data.subtitle || "").replace(/^Updated as on /, "");
+  const hasMore = data.visibleCount && data.visibleCount < data.rows.length;
+  let expanded = false;
 
   container.innerHTML = `
     <div class="team-card cols-${maxCols}">
@@ -88,20 +90,33 @@ function renderTeamBoard(containerId, data) {
         <div class="meta"><strong>${dateOnly}</strong></div>
       </div>
       <div class="team-tables-wrap"></div>
+      ${hasMore ? `<div class="team-more-wrap"><button class="team-more-btn" type="button"></button></div>` : ""}
       <div class="team-footer"><div class="team-footer-note">Rankings as on <b>${dateOnly}</b> · ${data.footerNote}</div></div>
     </div>`;
 
   const wrap = container.querySelector(".team-tables-wrap");
+  const moreBtn = container.querySelector(".team-more-btn");
   let currentCols = 0;
 
-  function rerender(cols) {
-    if (cols === currentCols) return;
+  function visibleRows() {
+    return (hasMore && !expanded) ? data.rows.slice(0, data.visibleCount) : data.rows;
+  }
+
+  function updateMoreBtn() {
+    if (!moreBtn) return;
+    moreBtn.textContent = expanded
+      ? `Show top ${data.visibleCount} only ▲`
+      : `Show all ${data.rows.length} teams ▼`;
+  }
+
+  function rerender(cols, force) {
+    if (cols === currentCols && !force) return;
     currentCols = cols;
 
     wrap.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
     wrap.innerHTML = "";
 
-    const chunks = teamSplitRows(data.rows, cols);
+    const chunks = teamSplitRows(visibleRows(), cols);
     chunks.forEach((chunk, i) => {
       const half = document.createElement("div");
       half.className = "team-half";
@@ -114,6 +129,15 @@ function renderTeamBoard(containerId, data) {
       const body = half.querySelector("tbody");
       chunk.forEach(row => body.appendChild(teamBuildRow(row)));
       wrap.appendChild(half);
+    });
+  }
+
+  if (moreBtn) {
+    updateMoreBtn();
+    moreBtn.addEventListener("click", () => {
+      expanded = !expanded;
+      updateMoreBtn();
+      rerender(currentCols, true);
     });
   }
 
