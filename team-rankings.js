@@ -91,7 +91,7 @@ function renderTeamBoard(containerId, data) {
       </div>
       <div class="team-tables-wrap"></div>
       ${hasMore ? `<div class="team-more-wrap"><button class="team-more-btn" type="button"></button></div>` : ""}
-      <div class="team-footer"><div class="team-footer-note">Rankings as on <b>${dateOnly}</b> · ${data.footerNote}</div></div>
+      <div class="team-footer"><div class="team-footer-note">Rankings as on <b>${dateOnly}</b>${data.footerNote ? " · " + data.footerNote : ""}</div></div>
     </div>`;
 
   const wrap = container.querySelector(".team-tables-wrap");
