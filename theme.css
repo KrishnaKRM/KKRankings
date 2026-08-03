@@ -287,6 +287,7 @@ tr.r3 .badge{ background:linear-gradient(145deg,#d69a63,var(--bronze)); color:#4
   box-shadow:0 0 0 1px rgba(0,0,0,0.15);
   vertical-align:middle;
 }
+.flag.np-flag{ max-width:14px; max-height:20px; box-shadow:none; }
 
 .name{ font-weight:600; font-size:13.5px; white-space:nowrap; vertical-align:middle; }
 tr.r1 .name, tr.r2 .name, tr.r3 .name{ font-weight:700; }

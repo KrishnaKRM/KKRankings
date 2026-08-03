@@ -38,11 +38,12 @@ function playerBuildRow(row) {
   const nameClass = row.tag ? (row.tag === "Retired" ? "name retired" : "name inactive") : "name";
   const tagHTML = row.tag ? `<span class="tag">${row.tag}</span>` : "";
   const flag = row.svg || playerFlagURL(row.code);
+  const flagClass = row.code === "np" ? "flag np-flag" : "flag";
 
   tr.innerHTML = `
     <td style="width:54px;">${playerMoveHTML(row.chg)}</td>
     <td style="width:39px;"><span class="badge">${row.rank}</span></td>
-    <td style="width:34px;"><img class="flag" src="${flag}" alt=""></td>
+    <td style="width:34px;"><img class="${flagClass}" src="${flag}" alt=""></td>
     <td><span class="${nameClass}">${row.name}</span>${tagHTML}</td>
   `;
   return tr;
@@ -92,10 +93,20 @@ function renderFormatData(prefix, data) {
   setText(`${prefix}-bowling-footerdate`, data.footerDate);
 
   const battingNotes = document.getElementById(`${prefix}-notesBatting`);
-  if (battingNotes) battingNotes.innerHTML = (data.footnotesBatting || []).map(playerNoteItemHTML).join("");
+  if (battingNotes) {
+    const items = data.footnotesBatting || [];
+    battingNotes.innerHTML = items.map(playerNoteItemHTML).join("");
+    const section = battingNotes.closest(".notes");
+    if (section) section.style.display = items.length ? "" : "none";
+  }
 
   const bowlingNotes = document.getElementById(`${prefix}-notesBowling`);
-  if (bowlingNotes) bowlingNotes.innerHTML = (data.footnotesBowling || []).map(playerNoteItemHTML).join("");
+  if (bowlingNotes) {
+    const items = data.footnotesBowling || [];
+    bowlingNotes.innerHTML = items.map(playerNoteItemHTML).join("");
+    const section = bowlingNotes.closest(".notes");
+    if (section) section.style.display = items.length ? "" : "none";
+  }
 }
 
 /* Standalone auto-render: if this page has its own #rankingsData
