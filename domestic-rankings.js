@@ -93,7 +93,7 @@ function renderDomesticBoard(containerId, data) {
         <h1>${data.title}</h1>
       </div>
       <div class="domestic-body-area">
-        <div class="domestic-legend">${(data.legend || []).map(domesticLegendItemHTML).join("")}</div>
+        ${(data.legend || []).length ? `<div class="domestic-legend">${data.legend.map(domesticLegendItemHTML).join("")}</div>` : ""}
         <div class="domestic-tables-wrapper"></div>
       </div>
       <div class="domestic-footer"><span>${data.subtitle}</span></div>
