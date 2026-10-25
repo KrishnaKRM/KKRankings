@@ -15,7 +15,7 @@ const DOMESTIC_MIN_COL_WIDTH = 370; // keep in sync with domestic-theme.css
 const DOMESTIC_GRID_GAP = 1;
 
 function domesticDeltaClass(delta) {
-  if (delta === "—" || delta === "-") return "";
+  if (!delta || delta === "—" || delta === "-") return "";
   return delta.startsWith("+") ? "domestic-pos" : "domestic-neg";
 }
 
@@ -117,7 +117,7 @@ function renderDomesticBoard(containerId, data) {
       // with just one). Later columns only get one when genuinely
       // shown side-by-side — never when stacked below another.
       half.innerHTML = (i === 0 || cols > 1)
-        ? `<table><thead><tr><th class="domestic-arrow-col"></th><th class="domestic-rank-col">Rank</th><th class="team-col">Team</th><th class="domestic-rating-col">Rating</th><th class="domestic-delta-col">Δ</th></tr></thead><tbody></tbody></table>`
+        ? `<table><thead><tr><th class="domestic-arrow-col"></th><th class="domestic-rank-col">Rank</th><th class="team-col">Team</th><th class="domestic-rating-col">Rating</th><th class="domestic-delta-col">${data.showChanges === false ? "" : "Δ"}</th></tr></thead><tbody></tbody></table>`
         : `<table><tbody></tbody></table>`;
       const body = half.querySelector("tbody");
       chunk.forEach(row => body.appendChild(domesticBuildRow(row)));
